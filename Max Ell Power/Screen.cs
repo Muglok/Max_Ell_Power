@@ -15,7 +15,7 @@ namespace Max_Ell_Power
             this.hardware = hardware;
         }
 
-        public void Show()
+        public virtual void Show()
         {
             //TO DO
         }

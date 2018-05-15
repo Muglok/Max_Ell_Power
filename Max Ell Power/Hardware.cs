@@ -31,6 +31,7 @@ namespace Max_Ell_Power
             if (fullScreen)
                 flags = flags | Sdl.SDL_FULLSCREEN;
 
+
             Sdl.SDL_Init(Sdl.SDL_INIT_EVERYTHING);
             screen = Sdl.SDL_SetVideoMode(screenWidth, screenHeight, colorDepth, flags);
             Sdl.SDL_Rect rect = new Sdl.SDL_Rect(0, 0, screenWidth, screenHeight);
