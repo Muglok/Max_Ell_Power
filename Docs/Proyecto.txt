@@ -1,0 +1,34 @@
+1- Hardware Audio Font Screen Image GameScreen GameController
+
+2- MainMenuScreen
+
+3- Sprite MovableSprite MainCharacter StaticSprite
+
+4- PlayerSelectScreen (Soldier, bear, SpecialAgent, Frog...)
+
+5- Enemy (LandEnemy, AerialEnemy, JumpEnemy)
+
+6- Wall ¿Level/Map? StartPoint ExitPoint
+
+7- Weapon Shoot(con las direcciones)/////////////
+
+8- Funciones para los disparos
+
+9- Trap MeleAttack
+
+10- Jump Gravity???????
+
+11- Map Ladders DangerousFlor (MapDesign)
+
+12- CheckPoint (Ingame pause menu)
+
+13- Treasures (Score sistem)
+
+14- ScoreBoardScreen
+
+15- Sulrvival mode part1
+
+16- Survival mode part 2
+
+17- Real options
+

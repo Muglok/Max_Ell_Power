@@ -1,0 +1,9 @@
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\bin\Debug\Max Ell Power.exe.config
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\bin\Debug\Max Ell Power.exe
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\bin\Debug\Max Ell Power.pdb
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\bin\Debug\System.Data.SQLite.dll
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\bin\Debug\Tao.Sdl.dll
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\obj\Debug\Max Ell Power.csprojResolveAssemblyReference.cache
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\obj\Debug\Max Ell Power.csproj.CoreCompileInputs.cache
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\obj\Debug\Max Ell Power.exe
+C:\Users\carco\source\repos\Max Ell Power\Max Ell Power\obj\Debug\Max Ell Power.pdb
