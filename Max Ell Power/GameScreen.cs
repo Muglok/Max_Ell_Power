@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Max_Ell_Power
+﻿namespace Max_Ell_Power
 {
     /*
      *This screen will show the game screen on we will play the game
@@ -15,25 +9,42 @@ namespace Max_Ell_Power
         Audio audio;
         bool gameOver;
         MainCharacter mainCharacter;
+        int chosenPlayer;
         int keyPressed;
 
         public GameScreen(Hardware hardware) : base(hardware)
         {
-            level0 = new Image("imgs/Map.png",1200,720);
-            character = new Image("imgs/characterRightMini.png", 60,88);
+            level0 = new Image("imgs/Map.png", 1200, 720);
             audio = new Audio(44100, 2, 4096);
             audio.AddMusic("sound/Heroic-Deeds.mid");
-            mainCharacter = new MainCharacter();
             level0.MoveTo(0, 0);
-            mainCharacter.X = 450;
-            mainCharacter.Y = 570;
-            mainCharacter.X += 200;
-            character.MoveTo(mainCharacter.X, mainCharacter.Y);
         }
 
-        public void ChosenPlayer()
+        public int ChosenPlayer
         {
-            //TO DO
+            get { return chosenPlayer; }
+
+            set
+            {
+                if (value >= 1 || value <= 4)
+                    chosenPlayer = value;
+                switch (value)
+                {
+                    case 1:
+                        mainCharacter = new Bear();
+                        break;
+                    case 2:
+                        mainCharacter = new Frog();
+                        break;
+                    case 3:
+                        mainCharacter = new Soldier();
+                        break;
+                    case 4:
+                        mainCharacter = new SpecialAgent();
+                        break;
+                }
+                mainCharacter.MoveTo(450, 570);
+            }
         }
 
         public void DecreaseLives()
@@ -66,7 +77,8 @@ namespace Max_Ell_Power
             keyPressed = hardware.KeyPressed();
             if (Hardware.JoystickMovedLeft() ||
                 hardware.IsKeyPressed(Hardware.KEY_LEFT))
-                mainCharacter.X -= MainCharacter.STEP_LENGHT;
+                if(mainCharacter.X > 0)
+                    mainCharacter.X -= MainCharacter.STEP_LENGHT;
 
 
             else if (Hardware.JoystickMovedRight() ||

@@ -37,6 +37,7 @@ namespace Max_Ell_Power
                         case 1:
                             playerSelect.Show();
                             game = new GameScreen(hardware);
+                            game.ChosenPlayer = playerSelect.ChosenPlayer();
                             game.Show();
                             break;
                         default:

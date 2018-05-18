@@ -12,6 +12,8 @@ namespace Max_Ell_Power
     class MovableSprite : Sprite
     {
         const byte TOTAL_MOVEMENTS = 2;
+        //Sprite speed control
+        const byte SPRITECHANGE = 10;
         //Spites posible direcctions, without use for now
         public enum SpriteDirections { LEFT, RIGHT, UP, DOWN, RIGHT_UP, LEFT_UP,
             RIGHT_DOWN, LEFT_DOWN };
@@ -20,7 +22,7 @@ namespace Max_Ell_Power
 
         byte currentSpriteChange;
 
-        public Image[] Sprites = new Image[TOTAL_MOVEMENTS];
+        public Image[][] Sprites = new Image[TOTAL_MOVEMENTS][];
 
         
         public MovableSprite()

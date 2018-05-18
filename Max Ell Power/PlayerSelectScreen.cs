@@ -23,7 +23,7 @@ namespace Max_Ell_Power
         public PlayerSelectScreen(Hardware hardware) : base(hardware)
         {
             backgroundMusic = new Audio(44100, 2, 4096);
-            backgroundMusic.AddMusic("sound/Heroic-Deeds.mid");
+            backgroundMusic.AddMusic("sound/Weird-Xmas.mid");
             arrowSound = new Audio(44100, 2, 4096);
             arrowSound.AddWAV("sound/fire.wav");
 
@@ -112,7 +112,7 @@ namespace Max_Ell_Power
 
         public int ChosenPlayer()
         {
-            return chosenPlayer;
+            return chosenPlayer+1;
         }
     }
 }

@@ -12,10 +12,13 @@ namespace Max_Ell_Power
      */
     class Sprite
     {
+        public const short SRITE_WIDTH = 138;
+        public const short SRITE_HEIGHT = 129;
+
         public short X { get; set; }
         public short Y { get; set; }
-        public short SpriteX { get; set; }
-        public short SpriteY { get; set; }
+       
+        public Image SpriteImage { get; set; }
 
         public void MoveTo(short x, short y)
         {
