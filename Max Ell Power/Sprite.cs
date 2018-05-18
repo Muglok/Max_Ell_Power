@@ -4,8 +4,8 @@
 */
 class Sprite
 {
-    public const short SPRITE_WIDTH = 138;
-    public const short SPRITE_HEIGHT = 129;
+    public short SPRITE_WIDTH;
+    public short SPRITE_HEIGHT;
 
     public short X { get; set; }
     public short Y { get; set; }

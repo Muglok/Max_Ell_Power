@@ -82,12 +82,12 @@ class GameScreen : Screen
 
         if (left)
             if(mainCharacter.X > 0)
-            mainCharacter.X -= MainCharacter.STEP_LENGHT;
+            mainCharacter.X -= mainCharacter.STEP_LENGHT;
 
-        else if (right)
+        if (right)
             if (mainCharacter.X < GameController.SCREEN_WIDTH - 
-                Sprite.SPRITE_WIDTH)
-                mainCharacter.X += MainCharacter.STEP_LENGHT;
+                mainCharacter.SPRITE_WIDTH)
+                mainCharacter.X += mainCharacter.STEP_LENGHT;
 
         if (Hardware.JoystickPressed(1))
             keyPressed = Hardware.KEY_ESC;
@@ -114,16 +114,16 @@ class GameScreen : Screen
             hardware.DrawImage(level0);
             MoveCharacter();
 
-            hardware.DrawSprite(mainCharacter.SpriteImage,
-                (short)(138 - GameController.SCREEN_WIDTH),
-                (short)(129 - GameController.SCREEN_HEIGHT),
-                Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT,
-                Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT);
+            /* hardware.DrawSprite(mainCharacter.SpriteImage,
+                 (short)(138 - GameController.SCREEN_WIDTH),
+                 (short)(129 - GameController.SCREEN_HEIGHT),
+                 20, 20,
+                 Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT);*/
 
-            /*hardware.DrawSprite(Sprite.SpriteSheet, (short)(character.X - level.XMap), (short)(character.Y - level.YMap),
+           /* hardware.DrawSprite(mainCharacter.SpriteImage, (short)(character.X - level.XMap), (short)(character.Y - level.YMap),
                 character.SpriteX, character.SpriteY, Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT);*/
 
-            mainCharacter.MoveTo(450,570);
+            mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
             hardware.DrawImage(mainCharacter.SpriteImage);
             hardware.UpdateScreen();
 

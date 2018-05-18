@@ -4,8 +4,9 @@ class Soldier : MainCharacter
     //TO DO
     public Soldier() : base()
     {
-        /*SPRITE_WIDTH = 138;
-        SPRITE_HEIGHT = 129;*/
+        STEP_LENGHT = 4;
+        SPRITE_WIDTH = 138;
+        SPRITE_HEIGHT = 129;
 
         Sprites[(int)SpriteDirections.RIGHT] = new Image[]{
             new Image("imgs/bearRight1.png", 138, 129),

@@ -3,8 +3,9 @@ class Frog : MainCharacter
 {
     public Frog() : base()
     {
-        /* SPRITE_WIDTH = 118;
-        SPRITE_HEIGHT = 69;*/
+        STEP_LENGHT = 6;
+        SPRITE_WIDTH = 118;
+        SPRITE_HEIGHT = 69;
 
         Sprites[(int)SpriteDirections.RIGHT] = new Image[]{
             new Image("imgs/ranitaRight1.png", 118, 69),

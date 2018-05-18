@@ -32,7 +32,7 @@ class PlayerSelectScreen : Screen
         characterXPositions[3] = 1100;
         characterYPositions[3] = 310;
 
-        chosenPlayer = 3;
+        chosenPlayer = 0;
         backGround = new Image
             (@"imgs\PlayerSelectScreenWithCharacters.png",1280,720);
         downArrow = new Image

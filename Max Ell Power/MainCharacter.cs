@@ -3,7 +3,7 @@
 */
 class MainCharacter : MovableSprite
 {
-    public const byte STEP_LENGHT = 5;
+    public byte STEP_LENGHT;
 
        
 

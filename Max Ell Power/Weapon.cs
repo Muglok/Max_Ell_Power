@@ -3,6 +3,5 @@
 */
 class Weapon : MovableSprite
 {
-    public byte STEP_LENGTH;
 }
 
