@@ -89,7 +89,7 @@ class GameScreen : Screen
                 Sprite.SPRITE_WIDTH)
                 mainCharacter.X += MainCharacter.STEP_LENGHT;
 
-        else if (Hardware.JoystickPressed(1))
+        if (Hardware.JoystickPressed(1))
             keyPressed = Hardware.KEY_ESC;
 
         if (left)

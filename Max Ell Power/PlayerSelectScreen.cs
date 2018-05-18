@@ -2,6 +2,8 @@
 * This class will show a screen in what you will be able to select one of 
 * the diferent main characters
 */
+using System.Threading;
+
 class PlayerSelectScreen : Screen
 {
 
@@ -52,7 +54,27 @@ class PlayerSelectScreen : Screen
         {
             keyPressed = hardware.KeyPressed();
 
-            if(keyPressed == Hardware.KEY_RIGHT ||
+            if (Hardware.JoystickMovedLeft())
+            {
+                keyPressed = Hardware.KEY_LEFT;
+                Thread.Sleep(70);
+            }
+
+            else if (Hardware.JoystickMovedRight())
+            {
+                keyPressed = Hardware.KEY_RIGHT;
+                Thread.Sleep(70);
+            }
+
+            else if (Hardware.JoystickMovedDown())
+            {
+                keyPressed = Hardware.KEY_DOWN;
+                Thread.Sleep(70);
+            }
+            else if (Hardware.JoystickPressed(0))
+                keyPressed = Hardware.KEY_SPACE;
+
+            if (keyPressed == Hardware.KEY_RIGHT ||
                 keyPressed == Hardware.KEY_LEFT ||
                 keyPressed == Hardware.KEY_DOWN)
             {
