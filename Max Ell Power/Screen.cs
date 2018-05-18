@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Max_Ell_Power
+﻿
+class Screen
 {
-    class Screen
+    /*
+        * Diferent tipes of screens inheredits of this class
+        */
+    protected Hardware hardware;
+
+    public Screen(Hardware hardware)
     {
-        /*
-         * Diferent tipes of screens inheredits of this class
-         */
-        protected Hardware hardware;
+        this.hardware = hardware;
+    }
 
-        public Screen(Hardware hardware)
-        {
-            this.hardware = hardware;
-        }
-
-        public virtual void Show()
-        {
-            //TO DO
-        }
+    public virtual void Show()
+    {
+        //TO DO
     }
 }
+

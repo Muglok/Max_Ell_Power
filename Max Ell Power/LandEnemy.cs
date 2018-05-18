@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Max_Ell_Power
+﻿
+class LandEnemy : Enemy
 {
-    class LandEnemy : Enemy
-    {
-        //TO DO
-    }
+    //TO DO
 }
+
