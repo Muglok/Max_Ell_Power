@@ -5,20 +5,12 @@
      */
     class GameScreen : Screen
     {
-        Image level0, character;
+        Image level0;
         Audio audio;
         bool gameOver;
         MainCharacter mainCharacter;
         int chosenPlayer;
         int keyPressed;
-
-        public GameScreen(Hardware hardware) : base(hardware)
-        {
-            level0 = new Image("imgs/Map.png", 1200, 720);
-            audio = new Audio(44100, 2, 4096);
-            audio.AddMusic("sound/Heroic-Deeds.mid");
-            level0.MoveTo(0, 0);
-        }
 
         public int ChosenPlayer
         {
@@ -45,6 +37,14 @@
                 }
                 mainCharacter.MoveTo(450, 570);
             }
+        }
+
+        public GameScreen(Hardware hardware) : base(hardware)
+        {
+            level0 = new Image("imgs/Map.png", 1200, 720);
+            audio = new Audio(44100, 2, 4096);
+            audio.AddMusic("sound/Heroic-Deeds.mid");
+            level0.MoveTo(0, 0);
         }
 
         public void DecreaseLives()
@@ -75,18 +75,28 @@
         public void MoveCharacter()
         {
             keyPressed = hardware.KeyPressed();
-            if (Hardware.JoystickMovedLeft() ||
-                hardware.IsKeyPressed(Hardware.KEY_LEFT))
+
+            bool left = Hardware.JoystickMovedLeft() ||
+                hardware.IsKeyPressed(Hardware.KEY_LEFT);
+            bool right = Hardware.JoystickMovedRight() ||
+                hardware.IsKeyPressed(Hardware.KEY_RIGHT);
+
+            if (left)
                 if(mainCharacter.X > 0)
-                    mainCharacter.X -= MainCharacter.STEP_LENGHT;
+                mainCharacter.X -= MainCharacter.STEP_LENGHT;
 
-
-            else if (Hardware.JoystickMovedRight() ||
-                hardware.IsKeyPressed(Hardware.KEY_RIGHT))
-                mainCharacter.X += MainCharacter.STEP_LENGHT;
+            else if (right)
+                if (mainCharacter.X < GameController.SCREEN_WIDTH - 
+                    Sprite.SPRITE_WIDTH)
+                    mainCharacter.X += MainCharacter.STEP_LENGHT;
 
             else if (Hardware.JoystickPressed(1))
                 keyPressed = Hardware.KEY_ESC;
+
+            if (left)
+                mainCharacter.Animate(MovableSprite.SpriteDirections.LEFT);
+            else if (right)
+                mainCharacter.Animate(MovableSprite.SpriteDirections.RIGHT);
         }
 
         public void MoveWeapon()
@@ -105,10 +115,16 @@
                 //1.-Draw_EveryThing
                 //TO DO
                 hardware.DrawImage(level0);
-                hardware.DrawImage(character);
-                hardware.UpdateScreen();
-
                 MoveCharacter();
+
+                hardware.DrawSprite(mainCharacter.SpriteImage,
+                    (short)(138 - GameController.SCREEN_WIDTH),
+                    (short)(129 - GameController.SCREEN_HEIGHT),
+                    Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT,
+                    Sprite.SPRITE_WIDTH, Sprite.SPRITE_WIDTH);
+                mainCharacter.MoveTo(450,570);
+                hardware.DrawImage(mainCharacter.SpriteImage);
+                hardware.UpdateScreen();
 
                 //2.-Move_Character_from_keyboard_input
                 //TO DO
@@ -124,7 +140,7 @@
                     gameOver = true;
                 }
                //MoveCharacter();
-                character.MoveTo(mainCharacter.X, mainCharacter.Y);
+                mainCharacter.MoveTo(mainCharacter.X, mainCharacter.Y);
 
 
             } while (!gameOver);

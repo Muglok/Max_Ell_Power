@@ -69,7 +69,7 @@
     <Compile Include="Hardware.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="IntroScreen.cs" />
-    <Compile Include="JumEnemy.cs" />
+    <Compile Include="JumpEnemy.cs" />
     <Compile Include="JumpEnemyGenerator.cs" />
     <Compile Include="Ladder.cs" />
     <Compile Include="LandEnemy.cs" />

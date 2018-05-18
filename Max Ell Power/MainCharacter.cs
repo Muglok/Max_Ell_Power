@@ -13,10 +13,7 @@ namespace Max_Ell_Power
     {
         public const byte STEP_LENGHT = 5;
 
-        public MainCharacter()
-        {
-
-        }
+       
 
         public void AddWeapon()
         {

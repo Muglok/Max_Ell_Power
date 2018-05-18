@@ -12,8 +12,8 @@ namespace Max_Ell_Power
      */
     class Sprite
     {
-        public const short SRITE_WIDTH = 138;
-        public const short SRITE_HEIGHT = 129;
+        public const short SPRITE_WIDTH = 138;
+        public const short SPRITE_HEIGHT = 129;
 
         public short X { get; set; }
         public short Y { get; set; }

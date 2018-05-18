@@ -13,7 +13,7 @@ namespace Max_Ell_Power
     {
         const byte TOTAL_MOVEMENTS = 2;
         //Sprite speed control
-        const byte SPRITECHANGE = 10;
+        const byte SPRITE_CHANGE = 10;
         //Spites posible direcctions, without use for now
         public enum SpriteDirections { LEFT, RIGHT, UP, DOWN, RIGHT_UP, LEFT_UP,
             RIGHT_DOWN, LEFT_DOWN };
@@ -32,14 +32,30 @@ namespace Max_Ell_Power
             currentSpriteChange = 0;
         }
 
-        public void Animate()
+        public void Animate(SpriteDirections movement)
         {
-            //TO DO
+            if(CurrentDirection != movement)
+            {
+                CurrentDirection = movement;
+                CurrentSprite = 0;
+                currentSpriteChange = 0;
+            }
+            else
+            {
+                currentSpriteChange++;
+                if(currentSpriteChange >= SPRITE_CHANGE)
+                {
+                    currentSpriteChange = 0;
+                    //Control the sprite speed
+                    CurrentSprite = (byte)((CurrentSprite + 1) % Sprites[(int)CurrentDirection].Length);
+                }
+            }
+            UpdateSpriteCoordinates();
         }
 
         public void UpdateSpriteCoordinates()
         {
-            //TO DO
+            SpriteImage = (Image)Sprites[(int)CurrentDirection][CurrentSprite];
         }
     }
 }

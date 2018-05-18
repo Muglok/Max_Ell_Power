@@ -1,9 +1,5 @@
 ﻿using System;
 using Tao.Sdl;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Max_Ell_Power
 {
@@ -100,10 +96,10 @@ namespace Max_Ell_Power
             Sdl.SDL_Color yellow = new Sdl.SDL_Color(255, 255, 0);
             switch (chosenOption)
             {
-                case 1:
+                /*case 1:
                     textAux = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
                 "Play Level not available yet", yellow);
-                    break;
+                    break;*/
                 case 2:
                     textAux = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
                 "Continue Last Game not available yet", yellow);
@@ -134,6 +130,8 @@ namespace Max_Ell_Power
                     break;
 
                 default:
+                    textAux = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
+                "", yellow);
                     break;
             }
         }

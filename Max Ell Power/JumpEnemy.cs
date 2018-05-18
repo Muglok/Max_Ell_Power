@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Max_Ell_Power
 {
-    class JumEnemy : Enemy
+    class JumpEnemy : Enemy
     {
         //TO DO
     }
