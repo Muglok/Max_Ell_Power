@@ -3,9 +3,9 @@
 */
 class MovableSprite : Sprite
 {
-    const byte TOTAL_MOVEMENTS = 2;
+    const byte TOTAL_MOVEMENTS = 8;
     //Sprite speed control
-    const byte SPRITE_CHANGE = 6;
+    public byte SPRITE_CHANGE = 6;
     //Spites posible direcctions, without use for now
     public enum SpriteDirections { LEFT, RIGHT, UP, DOWN, RIGHT_UP, LEFT_UP,
         RIGHT_DOWN, LEFT_DOWN };

@@ -1,8 +1,67 @@
 ﻿
-class Enemy
+class Enemy : MovableSprite
 {
-    public void Move()
+    public byte STEP_LENGHT = 2;
+    const byte DESTROY_SCORE = 50;
+    const byte DAMAGE = 1;
+
+    public void Move(MainCharacter mainCharacter)
     {
-        //TO DO
+        short xDist = (short) (mainCharacter.X - this.X);
+        short yDist = (short)(mainCharacter.Y - this.Y);
+
+        if (xDist < 0 && yDist == 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.LEFT;
+            this.X -= STEP_LENGHT;
+        }
+
+        else if (xDist > 0 && yDist == 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT;
+            this.X += STEP_LENGHT;
+        }
+
+        else if (xDist == 0 && yDist < 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.UP;
+            this.X -= STEP_LENGHT;
+        }
+
+        else if (xDist == 0 && yDist > 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.DOWN;
+            this.X += STEP_LENGHT;
+        }
+
+        else if(xDist < 0 && yDist < 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.LEFT_UP;
+            this.X -= STEP_LENGHT;
+            this.Y -= STEP_LENGHT;
+        }
+
+        else if (xDist < 0 && yDist > 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.LEFT_DOWN ;
+            this.X -= STEP_LENGHT;
+            this.Y += STEP_LENGHT;
+        }
+
+        else if (xDist > 0 && yDist > 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT_DOWN;
+            this.X += STEP_LENGHT;
+            this.Y += STEP_LENGHT;
+        }
+
+        else if (xDist > 0 && yDist < 0)
+        {
+            this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT_UP;
+            this.X += STEP_LENGHT;
+            this.Y -= STEP_LENGHT;
+        }
+
+        this.Animate(CurrentDirection);
     }
 }

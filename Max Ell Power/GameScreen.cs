@@ -10,6 +10,7 @@ class GameScreen : Screen
     MainCharacter mainCharacter;
     int chosenPlayer;
     int keyPressed;
+    Enemy enemy1, enemy2, enemy3;
 
     public int ChosenPlayer
     {
@@ -23,18 +24,25 @@ class GameScreen : Screen
             {
                 case 1:
                     mainCharacter = new Bear();
+                    mainCharacter.MoveTo(450, 
+                        (short) (666 - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 2:
                     mainCharacter = new Frog();
+                    mainCharacter.MoveTo(450,
+                        (short)(666 - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 3:
                     mainCharacter = new Soldier();
+                    mainCharacter.MoveTo(450,
+                        (short)(666 - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 4:
                     mainCharacter = new SpecialAgent();
+                    mainCharacter.MoveTo(450,
+                        (short)(666 - mainCharacter.SPRITE_HEIGHT));
                     break;
             }
-            mainCharacter.MoveTo(450, 570);
         }
     }
 
@@ -54,11 +62,36 @@ class GameScreen : Screen
     public void NewEnemy()
     {
         //TO DO
+        enemy1 = new AerialEnemy();
+        enemy1.MoveTo(600,
+                        (short)(200 - enemy1.SPRITE_HEIGHT));
+       enemy2 = new JumpEnemy();
+        enemy2.MoveTo(85,
+                        (short)(666 - enemy2.SPRITE_HEIGHT));
+        enemy3 = new LandEnemy();
+        enemy3.MoveTo(700,
+                        (short)(666 - enemy3.SPRITE_HEIGHT));
     }
 
     public void MoveEnemy()
     {
-        //TO DO
+        short oldY;
+
+        oldY = enemy1.Y;
+        enemy1.Move(mainCharacter);
+        if (enemy1.Y > 666 - (enemy1.SPRITE_HEIGHT))
+            enemy1.Y = oldY;
+
+        oldY = enemy2.Y;
+        enemy2.Move(mainCharacter);
+        if (enemy2.Y > 470)
+            enemy2.Y = oldY;
+
+        oldY = enemy3.Y;
+        enemy3.Move(mainCharacter);
+        if (enemy3.Y > 666 - (enemy3.SPRITE_HEIGHT))
+            enemy3.Y = oldY;
+
     }
 
     public void UpdatePoints()
@@ -107,27 +140,32 @@ class GameScreen : Screen
     {
         audio.PlayMusic(0,-1);
         gameOver = false;
+        NewEnemy();
         do
         {
             //1.-Draw_EveryThing
             //TO DO
+            hardware.ClearScreen();
             hardware.DrawImage(level0);
-            MoveCharacter();
-
-            /* hardware.DrawSprite(mainCharacter.SpriteImage,
-                 (short)(138 - GameController.SCREEN_WIDTH),
-                 (short)(129 - GameController.SCREEN_HEIGHT),
-                 20, 20,
-                 Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT);*/
-
-           /* hardware.DrawSprite(mainCharacter.SpriteImage, (short)(character.X - level.XMap), (short)(character.Y - level.YMap),
-                character.SpriteX, character.SpriteY, Sprite.SPRITE_WIDTH, Sprite.SPRITE_HEIGHT);*/
-
+            
             mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
             hardware.DrawImage(mainCharacter.SpriteImage);
+
+            MoveEnemy();
+            enemy1.SpriteImage.MoveTo(enemy1.X, enemy1.Y);
+            hardware.DrawImage(enemy1.SpriteImage);
+
+            enemy2.SpriteImage.MoveTo(enemy2.X, enemy2.Y);
+            hardware.DrawImage(enemy2.SpriteImage);
+
+            enemy3.SpriteImage.MoveTo(enemy3.X, enemy3.Y);
+            hardware.DrawImage(enemy3.SpriteImage);
+
             hardware.UpdateScreen();
 
             //2.-Move_Character_from_keyboard_input
+            MoveCharacter();
+
             //TO DO
             //3.-Move_Enemies_And_Objects
             //TO DO
@@ -140,9 +178,6 @@ class GameScreen : Screen
             {
                 gameOver = true;
             }
-            //MoveCharacter();
-            mainCharacter.MoveTo(mainCharacter.X, mainCharacter.Y);
-
 
         } while (!gameOver);
         audio.StopMusic();
