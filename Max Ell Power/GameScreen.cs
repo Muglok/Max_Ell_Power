@@ -1,16 +1,24 @@
-﻿
+﻿using System.Collections.Generic;
 /*
 *This screen will show the game screen on we will play the game
 */
 class GameScreen : Screen
 {
+    List<Enemy> Enemies = new List<Enemy>();
     Image level0;
     Audio audio;
-    bool gameOver;
     MainCharacter mainCharacter;
+    Enemy enemy1, enemy2, enemy3;
+    bool gameOver;
     int chosenPlayer;
     int keyPressed;
-    Enemy enemy1, enemy2, enemy3;
+    float movement_increment;
+    const float MAX_VERTICAL_SPEED = 9.5f;
+    const float VERTICAL_SPEED_DECREMENT = 0.93f;
+    bool left, right, isFalling, isJumping;
+    float verticalSpeed, horizontalSpeed;
+    short floorPosition = GameController.SCREEN_HEIGHT - 58;
+                
 
     public int ChosenPlayer
     {
@@ -25,22 +33,22 @@ class GameScreen : Screen
                 case 1:
                     mainCharacter = new Bear();
                     mainCharacter.MoveTo(450, 
-                        (short) (666 - mainCharacter.SPRITE_HEIGHT));
+                        (short) (floorPosition - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 2:
                     mainCharacter = new Frog();
                     mainCharacter.MoveTo(450,
-                        (short)(666 - mainCharacter.SPRITE_HEIGHT));
+                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 3:
                     mainCharacter = new Soldier();
                     mainCharacter.MoveTo(450,
-                        (short)(666 - mainCharacter.SPRITE_HEIGHT));
+                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 4:
                     mainCharacter = new SpecialAgent();
                     mainCharacter.MoveTo(450,
-                        (short)(666 - mainCharacter.SPRITE_HEIGHT));
+                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
                     break;
             }
         }
@@ -52,6 +60,7 @@ class GameScreen : Screen
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Heroic-Deeds.mid");
         level0.MoveTo(0, 0);
+        NewEnemy();
     }
 
     public void DecreaseLives()
@@ -71,27 +80,18 @@ class GameScreen : Screen
         enemy3 = new LandEnemy();
         enemy3.MoveTo(700,
                         (short)(666 - enemy3.SPRITE_HEIGHT));
+
+        Enemies.Add(enemy1);
+        Enemies.Add(enemy2);
+        Enemies.Add(enemy3);
     }
 
     public void MoveEnemy()
     {
-        short oldY;
-
-        oldY = enemy1.Y;
-        enemy1.Move(mainCharacter);
-        if (enemy1.Y > 666 - (enemy1.SPRITE_HEIGHT))
-            enemy1.Y = oldY;
-
-        oldY = enemy2.Y;
-        enemy2.Move(mainCharacter);
-        if (enemy2.Y > 470)
-            enemy2.Y = oldY;
-
-        oldY = enemy3.Y;
-        enemy3.Move(mainCharacter);
-        if (enemy3.Y > 666 - (enemy3.SPRITE_HEIGHT))
-            enemy3.Y = oldY;
-
+        foreach (Enemy Enemy in Enemies)
+        {
+            Enemy.Move(mainCharacter);
+        }
     }
 
     public void UpdatePoints()
@@ -106,28 +106,49 @@ class GameScreen : Screen
 
     public void MoveCharacter()
     {
-        keyPressed = hardware.KeyPressed();
-
-        bool left = Hardware.JoystickMovedLeft() ||
+        left = Hardware.JoystickMovedLeft() ||
             hardware.IsKeyPressed(Hardware.KEY_LEFT);
-        bool right = Hardware.JoystickMovedRight() ||
+        right = Hardware.JoystickMovedRight() ||
             hardware.IsKeyPressed(Hardware.KEY_RIGHT);
 
-        if (left)
-            if(mainCharacter.X > 0)
+        if (isFalling)
+            mainCharacter.Fall();
+        else if (isJumping)
+        {
+            mainCharacter.MoveTo((short)(mainCharacter.X + horizontalSpeed),
+                (short)(mainCharacter.Y + verticalSpeed));
+
+            verticalSpeed += VERTICAL_SPEED_DECREMENT;
+            if (verticalSpeed >= MAX_VERTICAL_SPEED)
+                verticalSpeed = MAX_VERTICAL_SPEED;
+            mainCharacter.Fall();
+        }
+
+        else if (hardware.IsKeyPressed(Hardware.KEY_SPACE) || 
+            Hardware.JoystickPressed(0))
+        {
+            isJumping = true;
+            verticalSpeed = -1 * MAX_VERTICAL_SPEED;
+            horizontalSpeed = left ? -1 * movement_increment : right ? +1 *
+                movement_increment : 0.0f;
+            mainCharacter.MoveTo((short)(mainCharacter.X + horizontalSpeed),
+                (short)(mainCharacter.Y + verticalSpeed));
+
+        }
+
+        else if (left && mainCharacter.X > 0)
             mainCharacter.X -= mainCharacter.STEP_LENGHT;
 
-        if (right)
-            if (mainCharacter.X < GameController.SCREEN_WIDTH - 
+        else if (right && mainCharacter.X < GameController.SCREEN_WIDTH -
                 mainCharacter.SPRITE_WIDTH)
                 mainCharacter.X += mainCharacter.STEP_LENGHT;
 
-        if (Hardware.JoystickPressed(1))
+        else if (Hardware.JoystickPressed(1))
             keyPressed = Hardware.KEY_ESC;
 
-        if (left)
+        if (left && !isFalling)
             mainCharacter.Animate(MovableSprite.SpriteDirections.LEFT);
-        else if (right)
+        else if (right && !isFalling)
             mainCharacter.Animate(MovableSprite.SpriteDirections.RIGHT);
     }
 
@@ -140,37 +161,59 @@ class GameScreen : Screen
     {
         audio.PlayMusic(0,-1);
         gameOver = false;
-        NewEnemy();
+        
+        isFalling = false;
+        isJumping = false;
+        verticalSpeed = 100.0f;
+        horizontalSpeed = 0.0f;
+        movement_increment = 2f + mainCharacter.STEP_LENGHT;
         do
         {
             //1.-Draw_EveryThing
             //TO DO
             hardware.ClearScreen();
             hardware.DrawImage(level0);
-            
+
             mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
             hardware.DrawImage(mainCharacter.SpriteImage);
 
             MoveEnemy();
-            enemy1.SpriteImage.MoveTo(enemy1.X, enemy1.Y);
-            hardware.DrawImage(enemy1.SpriteImage);
-
-            enemy2.SpriteImage.MoveTo(enemy2.X, enemy2.Y);
-            hardware.DrawImage(enemy2.SpriteImage);
-
-            enemy3.SpriteImage.MoveTo(enemy3.X, enemy3.Y);
-            hardware.DrawImage(enemy3.SpriteImage);
-
+            foreach (Enemy Enemy in Enemies)
+            {
+                Enemy.SpriteImage.MoveTo(Enemy.X, Enemy.Y);
+                hardware.DrawImage(Enemy.SpriteImage);
+            }
+  
             hardware.UpdateScreen();
 
             //2.-Move_Character_from_keyboard_input
+
             MoveCharacter();
 
             //TO DO
             //3.-Move_Enemies_And_Objects
             //TO DO
             //4-.Check_Colisions_AndUpdateGameState
-            //TO DO
+            isFalling = !isJumping;
+
+            if(mainCharacter.Y >= floorPosition -
+                mainCharacter.SPRITE_HEIGHT)
+            {
+                mainCharacter.MoveTo(mainCharacter.X, (short)
+                    (floorPosition - mainCharacter.SPRITE_HEIGHT));
+                isFalling = false;
+                isJumping = false;
+            }
+
+            foreach (Enemy Enemy in Enemies)
+            {
+                if (Enemy.Y >= floorPosition - Enemy.SPRITE_HEIGHT)
+                {
+                    Enemy.MoveTo(Enemy.X, (short)
+                        (floorPosition - Enemy.SPRITE_HEIGHT));
+                }
+            }
+
             //5.-Puse_Game
             //TO DO
             if (hardware.IsKeyPressed(Hardware.KEY_ESC) ||
@@ -182,5 +225,4 @@ class GameScreen : Screen
         } while (!gameOver);
         audio.StopMusic();
     }
-
 }

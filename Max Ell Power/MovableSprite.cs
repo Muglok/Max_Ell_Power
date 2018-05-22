@@ -39,7 +39,11 @@ class MovableSprite : Sprite
             {
                 currentSpriteChange = 0;
                 //Control the sprite speed
-                CurrentSprite = (byte)((CurrentSprite + 1) % Sprites[(int)CurrentDirection].Length);
+                if(CurrentDirection != SpriteDirections.UP ||
+                    CurrentDirection != SpriteDirections.DOWN)
+                    CurrentSprite = (byte)((CurrentSprite + 1) % Sprites[(int)CurrentDirection].Length);
+                else
+                    CurrentSprite = (byte)((CurrentSprite + 4) % Sprites[(int)CurrentDirection].Length);
             }
         }
         UpdateSpriteCoordinates();
@@ -49,5 +53,9 @@ class MovableSprite : Sprite
     {
         SpriteImage = (Image)Sprites[(int)CurrentDirection][CurrentSprite];
     }
-}
 
+    public void Fall()
+    {
+        this.Y += 2;
+    }
+}

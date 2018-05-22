@@ -10,56 +10,76 @@ class Enemy : MovableSprite
         short xDist = (short) (mainCharacter.X - this.X);
         short yDist = (short)(mainCharacter.Y - this.Y);
 
-        if (xDist < 0 && yDist == 0)
+        if(this.GetType().ToString() == "AerialEnemy")
         {
-            this.CurrentDirection = MovableSprite.SpriteDirections.LEFT;
-            this.X -= STEP_LENGHT;
+            if (xDist < 0 && yDist == 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.LEFT;
+                this.X -= STEP_LENGHT;
+            }
+
+            else if (xDist > 0 && yDist == 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT;
+                this.X += STEP_LENGHT;
+            }
+
+            else if (xDist == 0 && yDist < 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.UP;
+                this.X -= STEP_LENGHT;
+            }
+
+            else if (xDist == 0 && yDist > 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.DOWN;
+                this.X += STEP_LENGHT;
+            }
+
+            else if (xDist < 0 && yDist < 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.LEFT_UP;
+                this.X -= STEP_LENGHT;
+                this.Y -= STEP_LENGHT;
+            }
+
+            else if (xDist < 0 && yDist > 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.LEFT_DOWN;
+                this.X -= STEP_LENGHT;
+                this.Y += STEP_LENGHT;
+            }
+
+            else if (xDist > 0 && yDist > 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT_DOWN;
+                this.X += STEP_LENGHT;
+                this.Y += STEP_LENGHT;
+            }
+
+            else if (xDist > 0 && yDist < 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT_UP;
+                this.X += STEP_LENGHT;
+                this.Y -= STEP_LENGHT;
+            }
         }
 
-        else if (xDist > 0 && yDist == 0)
+        else
         {
-            this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT;
-            this.X += STEP_LENGHT;
-        }
+            this.Fall();
 
-        else if (xDist == 0 && yDist < 0)
-        {
-            this.CurrentDirection = MovableSprite.SpriteDirections.UP;
-            this.X -= STEP_LENGHT;
-        }
+            if (xDist < 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.LEFT;
+                this.X -= STEP_LENGHT;
+            }
 
-        else if (xDist == 0 && yDist > 0)
-        {
-            this.CurrentDirection = MovableSprite.SpriteDirections.DOWN;
-            this.X += STEP_LENGHT;
-        }
-
-        else if(xDist < 0 && yDist < 0)
-        {
-            this.CurrentDirection = MovableSprite.SpriteDirections.LEFT_UP;
-            this.X -= STEP_LENGHT;
-            this.Y -= STEP_LENGHT;
-        }
-
-        else if (xDist < 0 && yDist > 0)
-        {
-            this.CurrentDirection = MovableSprite.SpriteDirections.LEFT_DOWN ;
-            this.X -= STEP_LENGHT;
-            this.Y += STEP_LENGHT;
-        }
-
-        else if (xDist > 0 && yDist > 0)
-        {
-            this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT_DOWN;
-            this.X += STEP_LENGHT;
-            this.Y += STEP_LENGHT;
-        }
-
-        else if (xDist > 0 && yDist < 0)
-        {
-            this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT_UP;
-            this.X += STEP_LENGHT;
-            this.Y -= STEP_LENGHT;
+            else if (xDist > 0)
+            {
+                this.CurrentDirection = MovableSprite.SpriteDirections.RIGHT;
+                this.X += STEP_LENGHT;
+            }
         }
 
         this.Animate(CurrentDirection);
