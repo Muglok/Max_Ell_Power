@@ -66,7 +66,7 @@ class GameScreen : Screen
         NewEnemy();
 
         brick = new Image("imgs/brick.png", 50, 50);
-        brick.MoveTo(650,650);
+        brick.MoveTo(650,635);
     }
 
     public void DecreaseLives()
@@ -211,6 +211,8 @@ class GameScreen : Screen
             hardware.UpdateScreen();
 
             //2.-Move_Character_from_keyboard_input
+            oldX = mainCharacter.X;
+            oldY = mainCharacter.Y;
             MoveCharacter();
 
             //TO DO
@@ -227,6 +229,12 @@ class GameScreen : Screen
                     (floorPosition - mainCharacter.SPRITE_HEIGHT));
                 isFalling = false;
                 isJumping = false;
+            }
+
+            if (mainCharacter.CollidesWithImage(brick))
+            {
+                mainCharacter.X = oldX;
+                mainCharacter.Y = oldY;
             }
 
             if (mainCharacter.IsOver(brick))
