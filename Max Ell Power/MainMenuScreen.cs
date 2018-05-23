@@ -19,7 +19,7 @@ class MainMenuScreen : Screen
     public MainMenuScreen(Hardware hardware) : base(hardware)
     {
         font = new Font("fonts/Abberancy.ttf", 45);
-        bakcGround = new Image("imgs/Test.png", 1200,700);
+        bakcGround = new Image("imgs/Test.png", 1200,720);
         imgChoseOption = new Image("imgs/choose_player.png",48,48);
         audio = new Audio(44100,2,4096);
         audio2 = new Audio(44100, 2, 4096);

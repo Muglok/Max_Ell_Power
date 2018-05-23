@@ -17,7 +17,10 @@ class GameScreen : Screen
     const float VERTICAL_SPEED_DECREMENT = 0.93f;
     bool left, right, isFalling, isJumping;
     float verticalSpeed, horizontalSpeed;
+    short oldX, oldY;
     short floorPosition = GameController.SCREEN_HEIGHT - 58;
+
+    Image brick;
                 
 
     public int ChosenPlayer
@@ -61,6 +64,9 @@ class GameScreen : Screen
         audio.AddMusic("sound/Heroic-Deeds.mid");
         level0.MoveTo(0, 0);
         NewEnemy();
+
+        brick = new Image("imgs/brick.png", 50, 50);
+        brick.MoveTo(650,650);
     }
 
     public void DecreaseLives()
@@ -106,6 +112,7 @@ class GameScreen : Screen
 
     public void MoveCharacter()
     {
+        
         left = Hardware.JoystickMovedLeft() ||
             hardware.IsKeyPressed(Hardware.KEY_LEFT);
         right = Hardware.JoystickMovedRight() ||
@@ -159,6 +166,7 @@ class GameScreen : Screen
 
     public override void Show()
     {
+        
         audio.PlayMusic(0,-1);
         gameOver = false;
         
@@ -166,10 +174,19 @@ class GameScreen : Screen
         isJumping = false;
         verticalSpeed = 100.0f;
         horizontalSpeed = 0.0f;
+        //Wall[] bricks = new Wall[3];
+
+        /*for (int i = 0; i < bricks.Length; i++)
+        {
+            bricks[i] = new Wall();
+            bricks[i].SpriteImage.MoveTo((short)(50 * i), (short)(300 - (50*i)));
+        }*/
+
         movement_increment = 2f + mainCharacter.STEP_LENGHT;
         do
         {
             //1.-Draw_EveryThing
+            
             //TO DO
             hardware.ClearScreen();
             hardware.DrawImage(level0);
@@ -177,17 +194,23 @@ class GameScreen : Screen
             mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
             hardware.DrawImage(mainCharacter.SpriteImage);
 
+            hardware.DrawImage(brick);
+
             MoveEnemy();
             foreach (Enemy Enemy in Enemies)
             {
                 Enemy.SpriteImage.MoveTo(Enemy.X, Enemy.Y);
                 hardware.DrawImage(Enemy.SpriteImage);
             }
+
+            /*foreach (Wall brick in bricks)
+            {
+                hardware.DrawImage(brick.SpriteImage);
+            }*/
   
             hardware.UpdateScreen();
 
             //2.-Move_Character_from_keyboard_input
-
             MoveCharacter();
 
             //TO DO
@@ -196,11 +219,20 @@ class GameScreen : Screen
             //4-.Check_Colisions_AndUpdateGameState
             isFalling = !isJumping;
 
+
             if(mainCharacter.Y >= floorPosition -
                 mainCharacter.SPRITE_HEIGHT)
             {
                 mainCharacter.MoveTo(mainCharacter.X, (short)
                     (floorPosition - mainCharacter.SPRITE_HEIGHT));
+                isFalling = false;
+                isJumping = false;
+            }
+
+            if (mainCharacter.IsOver(brick))
+            {
+                mainCharacter.MoveTo(mainCharacter.Y, (short)(brick.Y -
+                mainCharacter.SPRITE_HEIGHT));
                 isFalling = false;
                 isJumping = false;
             }
