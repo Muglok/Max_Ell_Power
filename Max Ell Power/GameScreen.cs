@@ -207,7 +207,6 @@ class GameScreen : Screen
         }
     }
 
-
     public override void Show()
     {
         CreatePlatforms();
@@ -291,14 +290,6 @@ class GameScreen : Screen
                     isFalling = false;
                     isJumping = false;
                 }
-
-                /*else if (mainCharacter.IsOver(brick.SpriteImage))
-                {
-                    mainCharacter.MoveTo(mainCharacter.X, (short)(brick.SpriteImage.Y -
-                    mainCharacter.SPRITE_HEIGHT));
-                    isFalling = false;
-                    isJumping = false;
-                }*/
             }
 
             foreach (Enemy Enemy in Enemies)
