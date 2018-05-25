@@ -67,7 +67,7 @@ class Enemy : MovableSprite
 
         else
         {
-            this.Fall();
+            this.Fall(1);
 
             if (xDist < 0)
             {

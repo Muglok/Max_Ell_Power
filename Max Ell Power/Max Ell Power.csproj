@@ -67,6 +67,8 @@
     <Compile Include="GameScreen.cs" />
     <Compile Include="Grenade.cs" />
     <Compile Include="Hardware.cs" />
+    <Compile Include="HelpScreen.cs" />
+    <Compile Include="HordeModeScreen.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="IntroScreen.cs" />
     <Compile Include="JumpEnemy.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Map.cs" />
     <Compile Include="MeleeAttack.cs" />
     <Compile Include="MovableSprite.cs" />
+    <Compile Include="OptionsScreen.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="PlayerSelectScreen.cs" />
     <Compile Include="Program.cs" />
@@ -99,6 +102,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="fonts\Abberancy.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="fonts\Nashville.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -220,7 +226,16 @@
     <Content Include="imgs\Enemies\LandEnemyLeft1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="imgs\fondoNegro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgs\Help.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="imgs\Map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgs\Map2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="imgs\platform1.png">
@@ -259,6 +274,12 @@
     <Content Include="imgs\ranitaRight4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="imgs\Options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgs\ScoreBoard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="imgs\SpecialAgentLeft.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -287,6 +308,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SDL_ttf.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sound\adagio-for-strings.mid">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sound\Apocalypse.mid">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="sound\fire.wav">

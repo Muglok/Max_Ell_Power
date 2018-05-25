@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-/*
-*This screen will show the game screen on we will play the game
-*/
-class GameScreen : Screen
+class HordeModeScreen : Screen
 {
     Platform[] platforms = new Platform[11];
     Wall[] bricks = new Wall[6];
@@ -34,8 +31,8 @@ class GameScreen : Screen
             {
                 case 1:
                     mainCharacter = new Bear();
-                    mainCharacter.MoveTo(450, 
-                        (short) (floorPosition - mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(450,
+                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 2:
                     mainCharacter = new Frog();
@@ -56,12 +53,12 @@ class GameScreen : Screen
         }
     }
 
-    public GameScreen(Hardware hardware) : base(hardware)
+    public HordeModeScreen(Hardware hardware) : base(hardware)
     {
-        GameController.lastGame = 1;
-        level0 = new Image("imgs/Map.png", 1200, 720);
+        GameController.lastGame = 2;
+        level0 = new Image("imgs/Map2.png", 1200, 720);
         audio = new Audio(44100, 2, 4096);
-        audio.AddMusic("sound/Heroic-Deeds.mid");
+        audio.AddMusic("sound/Apocalypse.mid");
         level0.MoveTo(0, 0);
         NewEnemy();
     }
@@ -77,7 +74,7 @@ class GameScreen : Screen
         enemy1 = new AerialEnemy();
         enemy1.MoveTo(600,
                         (short)(200 - enemy1.SPRITE_HEIGHT));
-       enemy2 = new JumpEnemy();
+        enemy2 = new JumpEnemy();
         enemy2.MoveTo(85,
                         (short)(666 - enemy2.SPRITE_HEIGHT));
         enemy3 = new LandEnemy();
@@ -127,7 +124,7 @@ class GameScreen : Screen
             mainCharacter.Fall(verticalSpeed);
         }
 
-        else if (hardware.IsKeyPressed(Hardware.KEY_SPACE) || 
+        else if (hardware.IsKeyPressed(Hardware.KEY_SPACE) ||
             Hardware.JoystickPressed(0))
         {
             isJumping = true;
@@ -143,7 +140,7 @@ class GameScreen : Screen
 
         else if (right && mainCharacter.X < GameController.SCREEN_WIDTH -
                 mainCharacter.SPRITE_WIDTH)
-                mainCharacter.X += mainCharacter.STEP_LENGHT;
+            mainCharacter.X += mainCharacter.STEP_LENGHT;
 
         else if (Hardware.JoystickPressed(1))
             keyPressed = Hardware.KEY_ESC;
@@ -198,13 +195,13 @@ class GameScreen : Screen
         for (int i = 0; i < 3; i++)
         {
             bricks[i] = new Wall();
-            bricks[i].SpriteImage.MoveTo(60,(short)((610) - 50 * i));
+            bricks[i].SpriteImage.MoveTo(60, (short)((610) - 50 * i));
         }
 
         for (int i = 3; i < bricks.Length; i++)
         {
             bricks[i] = new Wall();
-            bricks[i].SpriteImage.MoveTo(1100, (short)((610) - 50 * (i-3)));
+            bricks[i].SpriteImage.MoveTo(1100, (short)((610) - 50 * (i - 3)));
         }
     }
 
@@ -214,9 +211,9 @@ class GameScreen : Screen
         CreatePlatforms();
         CreateWalls();
 
-        audio.PlayMusic(0,-1);
+        audio.PlayMusic(0, -1);
         gameOver = false;
-        
+
         isFalling = false;
         isJumping = false;
         verticalSpeed = 100.0f;
@@ -226,12 +223,12 @@ class GameScreen : Screen
         do
         {
             //1.-Draw_EveryThing
-            
+
             //TO DO
             hardware.ClearScreen();
             hardware.DrawImage(level0);
 
-            mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
+            mainCharacter.SpriteImage.MoveTo(mainCharacter.X, mainCharacter.Y);
             hardware.DrawImage(mainCharacter.SpriteImage);
 
             for (int i = 0; i < platforms.Length; i++)
@@ -250,7 +247,7 @@ class GameScreen : Screen
             {
                 hardware.DrawImage(brick.SpriteImage);
             }
-  
+
             hardware.UpdateScreen();
 
             //2.-Move_Character_from_keyboard_input
@@ -313,3 +310,4 @@ class GameScreen : Screen
         audio.StopMusic();
     }
 }
+

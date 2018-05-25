@@ -1,4 +1,5 @@
-﻿/*
+﻿using System;
+/*
 * This class manage the sprites that will move in the game screen
 */
 class MovableSprite : Sprite
@@ -16,7 +17,6 @@ class MovableSprite : Sprite
 
     public Image[][] Sprites = new Image[TOTAL_MOVEMENTS][];
 
-        
     public MovableSprite()
     {
         CurrentSprite = 0;
@@ -54,8 +54,10 @@ class MovableSprite : Sprite
         SpriteImage = (Image)Sprites[(int)CurrentDirection][CurrentSprite];
     }
 
-    public void Fall()
+    public void Fall(float speed)
     {
-        this.Y += 2;
+        if (speed % 2 == 0)
+            speed++;
+        this.Y += (short)(speed);
     }
 }

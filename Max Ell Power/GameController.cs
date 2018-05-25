@@ -5,6 +5,7 @@ class GameController
 {
     public const short SCREEN_WIDTH = 1200;
     public const short SCREEN_HEIGHT = 720;
+    public static short lastGame = 0;
 
     public void Start()
     {
@@ -16,7 +17,10 @@ class GameController
         PlayerSelectScreen playerSelect = new PlayerSelectScreen(hardware);
         ScoreBoardScreen scoreBoard = new ScoreBoardScreen(hardware);
         MainMenuScreen mainMenu = new MainMenuScreen(hardware);
+        HelpScreen helpScreen = new HelpScreen(hardware);
+        OptionsScreen optionsScreen = new OptionsScreen(hardware);
         GameScreen game;
+        HordeModeScreen hordeMode;
 
         do
         {
@@ -30,6 +34,43 @@ class GameController
                         game = new GameScreen(hardware);
                         game.ChosenPlayer = playerSelect.ChosenPlayer();
                         game.Show();
+                        break;
+                    case 2:
+                        if(lastGame != 0)
+                        {
+                            if(lastGame == 1)
+                            {
+                                playerSelect.Show();
+                                game = new GameScreen(hardware);
+                                game.ChosenPlayer = playerSelect.ChosenPlayer();
+                                game.Show();
+                            }
+                            else
+                            {
+                                playerSelect.Show();
+                                hordeMode = new HordeModeScreen(hardware);
+                                hordeMode.ChosenPlayer = playerSelect.ChosenPlayer();
+                                hordeMode.Show();
+                            }
+                        }
+                        break;
+                    case 3:
+                        playerSelect.Show();
+                        hordeMode = new HordeModeScreen(hardware);
+                        hordeMode.ChosenPlayer = playerSelect.ChosenPlayer();
+                        hordeMode.Show();
+                        break;
+                    case 4:
+                        scoreBoard.Show();
+                        break;
+                    case 5:
+                        helpScreen.Show();
+                        break;
+                    case 6:
+                        optionsScreen.Show();
+                        break;
+                    case 7:
+                        credits.Show();
                         break;
                     default:
                         break;

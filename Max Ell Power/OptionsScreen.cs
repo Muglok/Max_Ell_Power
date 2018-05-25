@@ -1,16 +1,15 @@
 ﻿using System.Threading;
-
-class ScoreBoardScreen : Screen
+class OptionsScreen : Screen
 {
     Image bakcGround;
     Audio audio;
     Font font;
     bool spacePressed;
 
-    public ScoreBoardScreen(Hardware hardware) : base(hardware)
+    public OptionsScreen(Hardware hardware) : base(hardware)
     {
         font = new Font("fonts/Nashville.ttf", 33);
-        bakcGround = new Image("imgs/ScoreBoard.png", 1200, 720);
+        bakcGround = new Image("imgs/Options.png", 1200, 720);
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/adagio-for-strings.mid");
         bakcGround.MoveTo(0, 0);
@@ -30,7 +29,7 @@ class ScoreBoardScreen : Screen
         {
 
             hardware.DrawImage(bakcGround);
-           
+
             hardware.UpdateScreen();
 
             int keyPressed = hardware.KeyPressed();
