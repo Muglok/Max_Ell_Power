@@ -56,8 +56,10 @@ class MovableSprite : Sprite
 
     public void Fall(float speed)
     {
-        if (speed % 2 == 0)
-            speed++;
-        this.Y += (short)(speed);
+        if (speed <= 0)
+            speed = 7;
+        if (speed % 2 == 1)
+             speed++;
+         this.Y += (short)(speed);
     }
 }

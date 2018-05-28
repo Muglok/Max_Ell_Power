@@ -7,6 +7,7 @@ class Sprite
 {
     public short SPRITE_WIDTH;
     public short SPRITE_HEIGHT;
+    public short SPRITE_BASE;
 
     public short X { get; set; }
     public short Y { get; set; }
@@ -27,8 +28,8 @@ class Sprite
 
     public bool IsOver(Image img)
     {
-        return (this.CollidesWith(img, this.SPRITE_WIDTH, this.SPRITE_HEIGHT,
-        img.ImageWidth, img.ImageHeight) &&
+        return (this.CollidesWith(img, (short)(this.SPRITE_WIDTH - this.SPRITE_BASE), 
+            this.SPRITE_HEIGHT,(short)(img.ImageWidth - this.SPRITE_BASE), img.ImageHeight) &&
         img.Y >= this.Y + this.SPRITE_HEIGHT * 0.9);
     }
 

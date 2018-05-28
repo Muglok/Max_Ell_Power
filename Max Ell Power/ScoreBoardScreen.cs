@@ -1,4 +1,7 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
+using Tao.Sdl;
+using System.Collections.Generic;
 
 class ScoreBoardScreen : Screen
 {
@@ -6,21 +9,39 @@ class ScoreBoardScreen : Screen
     Audio audio;
     Font font;
     bool spacePressed;
+    List<Scores> scoreList;
+
+    IntPtr[] scorePtr;
 
     public ScoreBoardScreen(Hardware hardware) : base(hardware)
     {
+        scoreList = GameScreen.scoreList;
+        scorePtr = new IntPtr[scoreList.Count];
         font = new Font("fonts/Nashville.ttf", 33);
-        bakcGround = new Image("imgs/ScoreBoard.png", 1200, 720);
+        bakcGround = new Image("imgs/fondoNegro.png", 1200, 720);
         audio = new Audio(44100, 2, 4096);
-        audio.AddMusic("sound/adagio-for-strings.mid");
+        audio.AddMusic("sound/Wistful-for-piano.mid");
+
         bakcGround.MoveTo(0, 0);
+
+        InitText();
     }
 
-    public void AddNewScore()
+    public void InitText()
     {
-        //TO DO
-    }
+        font = new Font("fonts/Nashville.ttf", 33);
+        Sdl.SDL_Color gray = new Sdl.SDL_Color(125, 125, 125);
+        Sdl.SDL_Color blue = new Sdl.SDL_Color(66, 125, 255);
+        string line;
 
+        for (int i = 0; i < scorePtr.Length; i++)
+        {
+            line = "Player number " + scoreList[i].num + "  Score: " +
+                scoreList[i].score + "  Jumps: " + scoreList[i].jumps;
+            scorePtr[i] = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
+            line, gray);
+        }
+    }
 
     public override void Show()
     {
@@ -28,9 +49,13 @@ class ScoreBoardScreen : Screen
         spacePressed = false;
         do
         {
-
             hardware.DrawImage(bakcGround);
-           
+
+            for (short i = 0; i < scorePtr.Length - 1; i++)
+            {
+                hardware.WriteText(scorePtr[i], 0, (short)(25 * i));
+            }
+
             hardware.UpdateScreen();
 
             int keyPressed = hardware.KeyPressed();

@@ -6,6 +6,7 @@ class Bear : MainCharacter
         STEP_LENGHT = 4;
         SPRITE_WIDTH = 138;
         SPRITE_HEIGHT = 129;
+        SPRITE_BASE = 30;
 
         Sprites[(int)SpriteDirections.RIGHT] = new Image[]{
             new Image("imgs/bearRight1.png", SPRITE_WIDTH, SPRITE_HEIGHT),
@@ -20,6 +21,12 @@ class Bear : MainCharacter
         new Image("imgs/bearLeft4.png", SPRITE_WIDTH, SPRITE_HEIGHT)};
 
         UpdateSpriteCoordinates();
+    }
+
+    public override void AddWeapon()
+    {
+        Shoot newShoot = new Shoot();
+        base.AddWeapon(newShoot);
     }
 }
 

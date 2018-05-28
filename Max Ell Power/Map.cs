@@ -22,9 +22,15 @@ class Map
     public short XMap { get; set; }
     public short YMap { get; set; }
 
-    public void AddWall()
+    public Map()
     {
-        //TO DO
+        Walls = new List<Sprite>();
+
+    }
+
+    public void AddWall(Wall w)
+    {
+        Walls.Add(w);
     }
 
     public void CollidesCharacterWithTreasure()

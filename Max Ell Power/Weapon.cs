@@ -3,5 +3,6 @@
 */
 class Weapon : MovableSprite
 {
+    public const byte STEP_LENGTH = 4;
 }
 

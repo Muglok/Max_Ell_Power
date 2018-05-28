@@ -6,6 +6,7 @@ class Frog : MainCharacter
         STEP_LENGHT = 6;
         SPRITE_WIDTH = 118;
         SPRITE_HEIGHT = 69;
+        SPRITE_BASE = 40;
         SPRITE_CHANGE = 6;
 
         Sprites[(int)SpriteDirections.RIGHT] = new Image[]{
@@ -21,6 +22,12 @@ class Frog : MainCharacter
         new Image("imgs/ranitaLeft4.png", SPRITE_WIDTH, SPRITE_HEIGHT)};
 
         UpdateSpriteCoordinates();
+    }
+
+    public override void AddWeapon()
+    {
+        Shoot newShoot = new Shoot();
+        base.AddWeapon(newShoot);
     }
 }
 
