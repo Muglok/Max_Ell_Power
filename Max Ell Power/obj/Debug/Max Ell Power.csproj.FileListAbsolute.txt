@@ -355,3 +355,19 @@ C:\Users\carco\Desktop\Testeo\Max Ell Power\bin\Debug\imgs\Shoot1RightV2.png
 C:\Users\carco\Desktop\Testeo\Max Ell Power\bin\Debug\imgs\Shoot2RightV2.png
 C:\Users\carco\Desktop\Testeo\Max Ell Power\bin\Debug\imgs\Shoot3RightV2.png
 C:\Users\carco\Desktop\Testeo\Max Ell Power\bin\Debug\imgs\Shoot4RightV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot1LeftV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot1Left.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot1Right.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot2Left.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot2LeftV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot2Right.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot3Left.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot3LeftV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot3Right.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot4Left.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot4LeftV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot4Right.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot1RightV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot2RightV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot3RightV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot4RightV2.png

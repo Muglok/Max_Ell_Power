@@ -17,7 +17,7 @@ class ScoreBoardScreen : Screen
     {
         scoreList = GameScreen.scoreList;
         scorePtr = new IntPtr[scoreList.Count];
-        font = new Font("fonts/Nashville.ttf", 33);
+        font = new Font("fonts/Abberancy.ttf", 35);
         bakcGround = new Image("imgs/fondoNegro.png", 1200, 720);
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Wistful-for-piano.mid");
@@ -29,17 +29,16 @@ class ScoreBoardScreen : Screen
 
     public void InitText()
     {
-        font = new Font("fonts/Nashville.ttf", 33);
-        Sdl.SDL_Color gray = new Sdl.SDL_Color(125, 125, 125);
-        Sdl.SDL_Color blue = new Sdl.SDL_Color(66, 125, 255);
+        Sdl.SDL_Color red = new Sdl.SDL_Color(255, 0, 0);
         string line;
 
         for (int i = 0; i < scorePtr.Length; i++)
         {
-            line = "Player number " + scoreList[i].num + "  Score: " +
-                scoreList[i].score + "  Jumps: " + scoreList[i].jumps;
+            line = "Player number " + Convert.ToInt32(scoreList[i].num) + "  Score: " +
+                Convert.ToInt32(scoreList[i].score) + "  Jumps: " +
+                Convert.ToInt32(scoreList[i].jumps);
             scorePtr[i] = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
-            line, gray);
+            line, red);
         }
     }
 
@@ -51,9 +50,9 @@ class ScoreBoardScreen : Screen
         {
             hardware.DrawImage(bakcGround);
 
-            for (short i = 0; i < scorePtr.Length - 1; i++)
+            for (short i = 0; i < scorePtr.Length; i++)
             {
-                hardware.WriteText(scorePtr[i], 0, (short)(25 * i));
+                hardware.WriteText(scorePtr[i], 50, (short)(35+(45 * i)));
             }
 
             hardware.UpdateScreen();
