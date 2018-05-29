@@ -35,7 +35,6 @@ class GameScreen : Screen
     const float VERTICAL_SPEED_DECREMENT = 0.93f;
     bool left, right, isFalling, isJumping;
     float verticalSpeed, horizontalSpeed;
-    short oldX, oldY;
     short floorPosition = GameController.SCREEN_HEIGHT - 58;
 
     public int ChosenPlayer
@@ -78,6 +77,7 @@ class GameScreen : Screen
         level0 = new Image("imgs/Map.png", 1200, 720);
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Heroic-Deeds.mid");
+        map = new Map("Map/map1.txt");
         level0.MoveTo(0, 0);
         NewEnemy();
         Load();
@@ -349,9 +349,11 @@ class GameScreen : Screen
 
     public override void Show()
     {
+        short oldX, oldY, oldXMap, oldYMap;
         DateTime timeStampFromLastShot = DateTime.Now;
         DateTime timeStampFromLastScoreIncrement = DateTime.Now;
         DateTime timeStampFromLastDamage = DateTime.Now;
+        map.BackGround.MoveTo(0, -720);
 
         CreatePlatforms();
         CreateWalls();
@@ -365,9 +367,6 @@ class GameScreen : Screen
         horizontalSpeed = 0.0f;
         movement_increment = 3f + mainCharacter.STEP_LENGHT;
 
-
-        
-
         do
         {
             if ((DateTime.Now - timeStampFromLastScoreIncrement).TotalMilliseconds 
@@ -380,7 +379,16 @@ class GameScreen : Screen
             
             //TO DO
             hardware.ClearScreen();
-            hardware.DrawImage(level0);
+            
+            hardware.DrawImage(map.BackGround);
+            hardware.DrawSprite(map.BackGround, 0, 0, map.XMap, map.YMap, 
+                GameController.SCREEN_WIDTH, GameController.SCREEN_HEIGHT);
+            foreach (Wall wall in map.Walls)
+                hardware.DrawSprite(wall.SpriteImage, (short)(wall.X - map.XMap), (short)
+                    (wall.Y), wall.X, wall.Y, 50, 50);
+
+            hardware.DrawSprite(bricks[0].SpriteImage, 50,50,50,50,50,50);
+
 
             mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
             hardware.DrawImage(mainCharacter.SpriteImage);
@@ -411,6 +419,8 @@ class GameScreen : Screen
             //2.-Move_Character_from_keyboard_input
             oldX = mainCharacter.X;
             oldY = mainCharacter.Y;
+            oldXMap = map.XMap;
+            oldYMap = map.YMap;
             MoveCharacter();
             if (hardware.IsKeyPressed(Hardware.KEY_C))
             {

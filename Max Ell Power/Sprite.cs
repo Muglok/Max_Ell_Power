@@ -30,7 +30,7 @@ class Sprite
     {
         return (this.CollidesWith(img, (short)(this.SPRITE_WIDTH - this.SPRITE_BASE), 
             this.SPRITE_HEIGHT,(short)(img.ImageWidth - this.SPRITE_BASE), img.ImageHeight) &&
-        img.Y >= this.Y + this.SPRITE_HEIGHT * 0.9);
+        img.Y >= this.Y + this.SPRITE_HEIGHT * 0.8);
     }
 
     public bool CollidesWith(Image img, short w1, short h1, short w2, short h2)

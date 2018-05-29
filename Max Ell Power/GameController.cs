@@ -32,7 +32,6 @@ class GameController
                 {
                     case 1:
                         playerSelect.Show();
-                        game = new GameScreen(hardware);
                         game.ChosenPlayer = playerSelect.ChosenPlayer();
                         game.Show();
                         break;
@@ -42,7 +41,6 @@ class GameController
                             if(lastGame == 1)
                             {
                                 playerSelect.Show();
-                                game = new GameScreen(hardware);
                                 game.ChosenPlayer = playerSelect.ChosenPlayer();
                                 game.Show();
                             }
@@ -76,7 +74,6 @@ class GameController
                     default:
                         break;
                 }
-                    
             }
         } while (!mainMenu.GetExit());
 

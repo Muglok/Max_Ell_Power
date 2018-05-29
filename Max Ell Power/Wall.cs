@@ -10,5 +10,11 @@ class Wall : StaticSprite
 
         SpriteImage = new Image("imgs/brick.png", SPRITE_WIDTH, SPRITE_HEIGHT);
     }
+
+    public Wall(short x, short y) : this()
+    {
+        X = x;
+        Y = y;
+    }
 }
 

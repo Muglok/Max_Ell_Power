@@ -371,3 +371,5 @@ C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot1RightV2.
 C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot2RightV2.png
 C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot3RightV2.png
 C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot4RightV2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\Map\map1.txt
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\Map\fondo.png

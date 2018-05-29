@@ -28,5 +28,11 @@ class Platform : StaticSprite
                 SPRITE_HEIGHT);
         }
     }
+
+    public Platform(int n, short x, short y) : this(n)
+    {
+        X = x;
+        Y = y;
+    }
 }
 

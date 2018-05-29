@@ -2,7 +2,7 @@
 class Enemy : MovableSprite
 {
     public byte STEP_LENGHT = 2;
-    const byte DESTROY_SCORE = 50;
+    public const byte DESTROY_SCORE = 50;
     const byte DAMAGE = 1;
 
     public void Move(MainCharacter mainCharacter)
