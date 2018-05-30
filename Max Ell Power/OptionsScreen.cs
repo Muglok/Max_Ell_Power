@@ -1,4 +1,7 @@
-﻿using System.Threading;
+﻿/*
+ *This screen wil manage the options of the game 
+ */
+using System.Threading;
 class OptionsScreen : Screen
 {
     Image bakcGround;
@@ -15,23 +18,16 @@ class OptionsScreen : Screen
         bakcGround.MoveTo(0, 0);
     }
 
-    public void AddNewScore()
-    {
-        //TO DO
-    }
-
-
     public override void Show()
     {
         audio.PlayMusic(0, -1);
         spacePressed = false;
+
+        hardware.DrawImage(bakcGround);
+        hardware.UpdateScreen();
+
         do
         {
-
-            hardware.DrawImage(bakcGround);
-
-            hardware.UpdateScreen();
-
             int keyPressed = hardware.KeyPressed();
 
             /*Two conditions to equalize the joystick movement with the 
@@ -48,8 +44,6 @@ class OptionsScreen : Screen
                 Thread.Sleep(70);
             }
 
-
-
             if (keyPressed == Hardware.KEY_SPACE ||
                 keyPressed == Hardware.KEY_ESC)
             {
@@ -57,7 +51,6 @@ class OptionsScreen : Screen
             }
 
             Thread.Sleep(10);
-
         } while (spacePressed != true);
         audio.StopMusic();
     }
