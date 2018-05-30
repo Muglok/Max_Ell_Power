@@ -88,6 +88,22 @@ class MainMenuScreen : Screen
     public bool GetExit()
     {
         return exitGame;
+
+    }
+
+    public void Draw()
+    {
+        hardware.DrawImage(bakcGround);
+        hardware.DrawImage(imgChoseOption);
+        for (short i = 0; i < textPtr.Length - 1; i++)
+        {
+            hardware.WriteText(textPtr[i], 70, (short)(100 + i * 50));
+        }
+
+
+        if (chosenOption < 8)
+            hardware.WriteText(textPtr[8], 450, 550);
+        hardware.UpdateScreen();
     }
 
     public override void Show()
@@ -96,21 +112,11 @@ class MainMenuScreen : Screen
         bakcGround.MoveTo(0, 0);
         spacePressed = false;
         exitGame = false;
+        Draw();
 
         do
         {
-            hardware.DrawImage(bakcGround);
-            hardware.DrawImage(imgChoseOption);
-            for (short i = 0; i < textPtr.Length - 1; i++)
-            {
-                hardware.WriteText(textPtr[i], 70, (short)(100 + i * 50));
-            }
-
-
-            if (chosenOption < 8)
-                hardware.WriteText(textPtr[8], 450, 550);
-            hardware.UpdateScreen();
-
+            //Check input
             int keyPressed = hardware.KeyPressed();
 
             /*Two conditions to equalize the joystick movement with the 
@@ -133,14 +139,21 @@ class MainMenuScreen : Screen
             if (keyPressed == Hardware.KEY_UP && chosenOption > 0)
             {
                 audio2.PlayWAV(0, 1, 0);
+                
                 chosenOption--;
                 imgChoseOption.MoveTo(470, (short)(imgChoseOption.Y - 50));
+                InitText();
+                Draw();
+
             }
             else if (keyPressed == Hardware.KEY_DOWN && chosenOption < 7)
             {
                 audio2.PlayWAV(0, 1, 0);
+                
                 chosenOption++;
                 imgChoseOption.MoveTo(470, (short)(imgChoseOption.Y + 50));
+                InitText();
+                Draw();
             }
 
             else if (keyPressed == Hardware.KEY_SPACE && chosenOption == 7)
@@ -155,7 +168,7 @@ class MainMenuScreen : Screen
             }
             
             Thread.Sleep(10);
-            InitText();
+            
 
         } while (spacePressed != true);
         audio.StopMusic();
