@@ -28,8 +28,8 @@ class GameScreen : Screen
     int chosenPlayer;
     int keyPressed;
     float movement_increment;
-    const float MAX_VERTICAL_SPEED = 12;
-    const float VERTICAL_SPEED_DECREMENT = 0.93f;
+    const float MAX_VERTICAL_SPEED = 13;
+    const float VERTICAL_SPEED_DECREMENT = 1.33f;
     bool left, right, isFalling, isJumping;
     float verticalSpeed, horizontalSpeed;
     short floorPosition = GameController.SCREEN_HEIGHT - 58;
@@ -128,10 +128,18 @@ class GameScreen : Screen
 
         if (isFalling)
             mainCharacter.Fall(verticalSpeed <= 0 ? -verticalSpeed : verticalSpeed);
+
         else if (isJumping)
         {
             mainCharacter.MoveTo((short)(mainCharacter.X + horizontalSpeed),
                 (short)(mainCharacter.Y + verticalSpeed));
+
+            if (mainCharacter.CurrentDirection == MovableSprite.SpriteDirections.LEFT
+                && map.XMap > 0)
+                map.XMap += (short)horizontalSpeed;
+            else if (mainCharacter.CurrentDirection == MovableSprite.SpriteDirections.RIGHT
+                && map.XMap > 0)
+                map.XMap += (short)horizontalSpeed;
 
             verticalSpeed += VERTICAL_SPEED_DECREMENT;
             if (verticalSpeed >= MAX_VERTICAL_SPEED)
@@ -158,7 +166,7 @@ class GameScreen : Screen
                 map.XMap -= mainCharacter.STEP_LENGHT;
         }
 
-        if (right && mainCharacter.X < GameController.SCREEN_WIDTH -
+        if (right && mainCharacter.X < map.Width -
                 mainCharacter.SPRITE_WIDTH)
         {
             mainCharacter.X += mainCharacter.STEP_LENGHT;
@@ -371,7 +379,7 @@ class GameScreen : Screen
         isJumping = false;
         verticalSpeed = 100.0f;
         horizontalSpeed = 0.0f;
-        movement_increment = 3f + mainCharacter.STEP_LENGHT;
+        movement_increment = 1.2f + mainCharacter.STEP_LENGHT;
 
         do
         {
@@ -416,7 +424,8 @@ class GameScreen : Screen
             MoveCharacter();
             if (hardware.IsKeyPressed(Hardware.KEY_C))
             {
-                if ((DateTime.Now - timeStampFromLastShot).TotalMilliseconds > SHOT_INTERVAL)
+                if ((DateTime.Now - timeStampFromLastShot).TotalMilliseconds 
+                    > SHOT_INTERVAL)
                 {
                     timeStampFromLastShot = DateTime.Now;
                     mainCharacter.AddWeapon();
@@ -443,8 +452,8 @@ class GameScreen : Screen
             foreach (Platform platforms in map.Platforms)
                 if (mainCharacter.IsOver(platforms.SpriteImage))
                 {
-                    mainCharacter.MoveTo(mainCharacter.X, (short)(platforms.SpriteImage.Y -
-                    mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(mainCharacter.X, (short)
+                        (platforms.SpriteImage.Y - mainCharacter.SPRITE_HEIGHT));
                     isFalling = false;
                     isJumping = false;
                 }
@@ -453,8 +462,8 @@ class GameScreen : Screen
             {
                 if (mainCharacter.IsOver(walls.SpriteImage))
                 {
-                    mainCharacter.MoveTo(mainCharacter.X, (short)(walls.SpriteImage.Y -
-                    mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(mainCharacter.X, (short)
+                        (walls.SpriteImage.Y - mainCharacter.SPRITE_HEIGHT));
                     isFalling = false;
                     isJumping = false;
                 }
