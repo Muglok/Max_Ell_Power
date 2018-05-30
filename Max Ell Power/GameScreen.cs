@@ -15,7 +15,7 @@ class GameScreen : Screen
     short jumps = 0;
     short score = 0;
 
-    public static  List<Scores> scoreList = new List<Scores>();
+    public static  List<Scores> scoreList;
     Map map;
     List<Enemy> Enemies = new List<Enemy>();
     
@@ -74,6 +74,7 @@ class GameScreen : Screen
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Heroic-Deeds.mid");
         map = new Map("Map/map1.txt");
+        scoreList = new List<Scores>();
         NewEnemy();
         Load();
     }
@@ -303,7 +304,7 @@ class GameScreen : Screen
                 {
                      line = (reader.ReadLine());
 
-                    if (line != null)
+                    if (line != null && line != "")
                     {
                         string[] parts = line.Split('-');
                         scoreLine.num = Convert.ToInt16(parts[0]);
@@ -318,15 +319,16 @@ class GameScreen : Screen
             }
             catch (PathTooLongException)
             {
-                Console.WriteLine("Path too long");
+                Catch("Path too long");
+
             }
             catch (IOException e)
             {
-                Console.WriteLine("I/O error: " + e.Message);
+                Catch("I/O error: " + e.Message);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Oooops... " + e.Message);
+                Catch("Oooops... " + e.Message);
             }
         }
     }
@@ -334,33 +336,44 @@ class GameScreen : Screen
     public void Save()
     {
         string name = "Score.txt";
+        Scores scoreLine = new Scores();
 
-        if (!File.Exists(name))
+        try
         {
-            Console.WriteLine("File not found!");
-        }
-        else
-        {
-            try
-            {
-                StreamWriter writer = new StreamWriter("Score.txt",true);
-                writer.WriteLine((scoreList.Count + 1) + "-" + score + "-" + jumps);
+            scoreLine.num = Convert.ToInt16((scoreList.Count + 1));
+            scoreLine.score = Convert.ToInt16(score);
+            scoreLine.jumps = Convert.ToInt16(jumps);
 
-                writer.Close();
-            }
-            catch (PathTooLongException)
-            {
-                Console.WriteLine("Path too long");
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine("I/O error: " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Oooops... " + e.Message);
-            }
+            StreamWriter writer = new StreamWriter(name,true);
+            writer.WriteLine((scoreList.Count + 1) + "-" + score + "-" + jumps);
+
+            writer.Close();
+            scoreList.Add(scoreLine);
         }
+        catch (PathTooLongException)
+        {
+             Catch("Path too long");
+
+        }
+        catch (IOException e)
+        {
+            Catch("I/O error: " + e.Message);
+        }
+        catch (Exception e)
+        {
+            Catch("Oooops... " + e.Message);
+        }
+    }
+
+    public void Catch(string error)
+    {
+        try
+        {
+            StreamWriter writer = new StreamWriter("LogError.txt", true);
+            writer.WriteLine(error);
+            writer.Close();
+        }
+        catch (Exception) { }
     }
 
 

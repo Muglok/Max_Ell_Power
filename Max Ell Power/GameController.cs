@@ -16,7 +16,7 @@ class GameController
         IntroScreen intro = new IntroScreen(hardware);
         CreditsScreen credits = new CreditsScreen(hardware);
         PlayerSelectScreen playerSelect = new PlayerSelectScreen(hardware);
-        ScoreBoardScreen scoreBoard = new ScoreBoardScreen(hardware);
+        ScoreBoardScreen scoreBoard;
         MainMenuScreen mainMenu = new MainMenuScreen(hardware);
         HelpScreen helpScreen = new HelpScreen(hardware);
         OptionsScreen optionsScreen = new OptionsScreen(hardware);
@@ -32,6 +32,7 @@ class GameController
                 {
                     case 1:
                         playerSelect.Show();
+                        game = new GameScreen(hardware);
                         game.ChosenPlayer = playerSelect.ChosenPlayer();
                         game.Show();
                         break;
@@ -41,6 +42,7 @@ class GameController
                             if(lastGame == 1)
                             {
                                 playerSelect.Show();
+                                game = new GameScreen(hardware);
                                 game.ChosenPlayer = playerSelect.ChosenPlayer();
                                 game.Show();
                             }
@@ -60,6 +62,7 @@ class GameController
                         hordeMode.Show();
                         break;
                     case 4:
+                        scoreBoard = new ScoreBoardScreen(hardware);
                         scoreBoard.Show();
                         break;
                     case 5:
