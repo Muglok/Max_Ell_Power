@@ -19,6 +19,7 @@ class HelpScreen : Screen
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Wistful-for-piano.mid");
         bakcGround.MoveTo(0, 0);
+        InitText();
     }
 
     public void InitText()
@@ -39,19 +40,25 @@ class HelpScreen : Screen
         }
     }
 
+    public void Draw()
+    {
+        hardware.DrawImage(bakcGround);
+
+        hardware.WriteText(textsPtr[0], 335, 125);
+        hardware.WriteText(textsPtr[1], 435, 375);
+        hardware.WriteText(textsPtr[2], 500, 585);
+
+        hardware.UpdateScreen();
+    }
+
     public override void Show()
     {
         audio.PlayMusic(0, -1);
         spacePressed = false;
+        
         do
         {
-            hardware.DrawImage(bakcGround);
-
-            hardware.WriteText(textsPtr[0], 335,125);
-            hardware.WriteText(textsPtr[1], 435, 375);
-            hardware.WriteText(textsPtr[2], 500, 585);
-
-            hardware.UpdateScreen();
+            Draw();
 
             int keyPressed = hardware.KeyPressed();
 
@@ -69,16 +76,11 @@ class HelpScreen : Screen
                 Thread.Sleep(70);
             }
 
-
-
             if (keyPressed == Hardware.KEY_SPACE ||
                 keyPressed == Hardware.KEY_ESC)
             {
                 spacePressed = true;
             }
-
-            Thread.Sleep(10);
-            InitText();
         } while (spacePressed != true);
         audio.StopMusic();
     }

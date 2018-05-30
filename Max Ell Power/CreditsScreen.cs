@@ -13,7 +13,7 @@ class CreditsScreen : Screen
     "Programmers", "Analyst", "Beta Tester", "New technologies investigator",
         "Head of Systems", "Distributor"};
     string[] names = new string[] { "Marcos Cervantes Matamoros", "Cervantes Marcos",
-    "MCM", "Cervantes Marcos", "Muglok", "Marcos Cervantes Matamoros",
+    "MCM", "Cervantes Marcos", "Muglok - Deisuke", "Marcos Cervantes Matamoros",
         "Marcos Cervantes Matamoros", "Marcos CM"};
     string[] agreements = new string[] {"Special thanks to all teachers that have" +
         " made possible the creation of ",
@@ -72,6 +72,27 @@ class CreditsScreen : Screen
        
     }
 
+    public void Draw()
+    {
+        hardware.DrawImage(bakcGround);
+        for (short i = 0; i < taksPtr.Length - 1; i++)
+        {
+            hardware.WriteText(taksPtr[i],
+                (short)((GameController.SCREEN_WIDTH / 2) - (taks[i].Length * 13) - 100)
+                , (short)(75 + i * 50));
+
+            hardware.WriteText(namesPtr[i],
+                (short)((GameController.SCREEN_WIDTH / 2) - 50)
+                , (short)(75 + i * 50));
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            hardware.WriteText(agreementsPtr[i],
+              (short)(195 - (agreements[i].Length / 2) + (35 * i)), (short)(525 + (50 * i)));
+        }
+        hardware.UpdateScreen();
+    }
+
     public override void Show()
     {
         audio.PlayMusic(0, -1);
@@ -80,25 +101,7 @@ class CreditsScreen : Screen
 
         do
         {
-            hardware.DrawImage(bakcGround);
-            for (short i = 0; i < taksPtr.Length - 1; i++)
-            {
-                hardware.WriteText(taksPtr[i], 
-                    (short)((GameController.SCREEN_WIDTH / 2) - (taks[i].Length*13) -100)
-                    , (short)(75 + i * 50));
-
-                hardware.WriteText(namesPtr[i],
-                    (short)((GameController.SCREEN_WIDTH / 2) -50)
-                    , (short)(75 + i * 50));
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                hardware.WriteText(agreementsPtr[i],
-                  (short) ( 195 - (agreements[i].Length / 2)+(35 *i)), (short)(525 + (50*i)));
-            }
-            
-
-            hardware.UpdateScreen();
+            Draw();
 
             int keyPressed = hardware.KeyPressed();
 
@@ -116,8 +119,6 @@ class CreditsScreen : Screen
                 Thread.Sleep(70);
             }
 
-
-
             if (keyPressed == Hardware.KEY_SPACE || 
                 keyPressed == Hardware.KEY_ESC)
             {
@@ -125,8 +126,6 @@ class CreditsScreen : Screen
             }
 
             Thread.Sleep(10);
-            InitText();
-
         } while (spacePressed != true);
         audio.StopMusic();
     }
