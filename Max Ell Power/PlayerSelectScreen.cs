@@ -3,6 +3,8 @@
 * the diferent main characters
 */
 using System.Threading;
+using System;
+using Tao.Sdl;
 
 class PlayerSelectScreen : Screen
 {
@@ -13,6 +15,8 @@ class PlayerSelectScreen : Screen
     private int chosenPlayer;
     private Audio backgroundMusic;
     private Audio arrowSound;
+    private IntPtr tittle;
+    private Font font;
 
     public PlayerSelectScreen(Hardware hardware) : base(hardware)
     {
@@ -20,6 +24,7 @@ class PlayerSelectScreen : Screen
         backgroundMusic.AddMusic("sound/Weird-Xmas.mid");
         arrowSound = new Audio(44100, 2, 4096);
         arrowSound.AddWAV("sound/fire.wav");
+        font = new Font("fonts/NexaRustSlab-BlackShadow01.otf", 50);
 
         characterXPositions = new int[4];
         characterYPositions = new int[4];
@@ -39,6 +44,9 @@ class PlayerSelectScreen : Screen
             (@"imgs\Arrow2MiniDown.png", 57, 48);
         downArrow.X = (short)characterXPositions[chosenPlayer];
         downArrow.Y = (short)characterYPositions[chosenPlayer];
+        Sdl.SDL_Color red = new Sdl.SDL_Color(255, 128, 0);
+        tittle = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
+            "Player Select Screen", red);
     }
 
     public override void Show()
@@ -47,6 +55,7 @@ class PlayerSelectScreen : Screen
         int keyPressed;
         hardware.ClearScreen();
         hardware.DrawImage(backGround);
+        hardware.WriteText(tittle, 65, 75);
         hardware.DrawImage(downArrow);
         hardware.UpdateScreen();
 
@@ -117,6 +126,7 @@ class PlayerSelectScreen : Screen
                 downArrow.Y = (short)characterYPositions[chosenPlayer];
                 hardware.ClearScreen();
                 hardware.DrawImage(backGround);
+                hardware.WriteText(tittle, 65, 75);
                 hardware.DrawImage(downArrow);
                 hardware.UpdateScreen();
             }
