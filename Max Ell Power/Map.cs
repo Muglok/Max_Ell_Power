@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System;
 using System.IO;
 /*
     * This class contains all the diferent elements in the map, draw the map and 

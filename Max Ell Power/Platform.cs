@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ *This class manage the platforms 
+ */
 
 class Platform : StaticSprite
 {
@@ -14,7 +12,7 @@ class Platform : StaticSprite
         {
             SPRITE_WIDTH = 150;
             SPRITE_HEIGHT = 103;
-            floorMargin = 30;
+            floorMargin = 0;
             SpriteImage = new Image("imgs/platform1.png", SPRITE_WIDTH,
                 SPRITE_HEIGHT);
         }
@@ -31,8 +29,7 @@ class Platform : StaticSprite
 
     public Platform(int n, short x, short y) : this(n)
     {
-        X = x;
-        Y = y;
+        this.SpriteImage.X = x;
+        this.SpriteImage.Y = (short)(y - 720 - this.floorMargin);
     }
 }
-

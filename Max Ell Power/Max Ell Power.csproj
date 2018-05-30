@@ -334,6 +334,9 @@
     <Content Include="imgs\SpecialAgentRight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="imgs\SubWall5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="imgs\Test.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
