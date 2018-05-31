@@ -11,15 +11,23 @@ class MainMenuScreen : Screen
     Image bakcGround, imgChoseOption;
     Audio audio, audio2;
     Font font;
-    string[] menuTexts = new string[] { "Play Level", "Continue Last Game",
+    string[] menuTexts;
+    string[] menuTextsIn = new string[] { "Play Level", "Continue Last Game",
     "Horde Mode", "ScoreBoard", "Help", "Options", "Credits", "Exit Game"};
+    string[] menuTextsEs = new string[] { "Jugar Nivel", "Continuar Partida",
+    "Modo Horda", "Tabla De Puntuaciones", "Ayuda", "Opciones",
+        "Creditos", "Salir Del Juego"};
+    string[] disp = new string[] { " not available yet", " aun no disposible"};
     IntPtr[] textPtr = new IntPtr[9];
     int chosenOption = 0;
+    short len = 0;
     bool spacePressed, exitGame;
 
     public MainMenuScreen(Hardware hardware) : base(hardware)
     {
         font = new Font("fonts/Abberancy.ttf", 45);
+
+        InitText();
         bakcGround = new Image("imgs/Test.png", 1200, 720);
         imgChoseOption = new Image("imgs/choose_player.png", 48, 48);
         audio = new Audio(44100, 2, 4096);
@@ -27,16 +35,28 @@ class MainMenuScreen : Screen
         audio.AddMusic("sound/song_a.mid");
         audio2.AddWAV("sound/fire.Wav");
 
+        imgChoseOption.MoveTo((short)(470 + len), 105);
         bakcGround.MoveTo(0, 0);
-        imgChoseOption.MoveTo(470, 105);
-
-        InitText();
     }
 
     //This method initialize the diferent texts in the mainMenuScreen
 
     public void InitText()
     {
+        switch (GameController.language)
+        {
+            case 1:
+                 menuTexts = menuTextsIn;
+                len = 0; break;
+
+            case 2:
+                 menuTexts = menuTextsEs;
+                len = 80;
+                break;
+             default:
+                menuTexts = menuTextsIn;
+                break;
+        }
         Sdl.SDL_Color red = new Sdl.SDL_Color(255, 0, 0);
         Sdl.SDL_Color green = new Sdl.SDL_Color(0, 255, 0);
 
@@ -63,14 +83,10 @@ class MainMenuScreen : Screen
         Sdl.SDL_Color yellow = new Sdl.SDL_Color(255, 255, 0);
         switch (chosenOption)
         {
-            case 1:
             case 2:
-            case 3:
-            case 4:
             case 5:
-            case 6:
                 textPtr[8] = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
-            menuTexts[chosenOption] + " not available yet", yellow);
+            menuTexts[chosenOption] + disp[GameController.language - 1], yellow);
                 break;
 
             default:
@@ -93,6 +109,7 @@ class MainMenuScreen : Screen
 
     public void Draw()
     {
+        InitText();
         hardware.DrawImage(bakcGround);
         hardware.DrawImage(imgChoseOption);
         for (short i = 0; i < textPtr.Length - 1; i++)
@@ -141,7 +158,8 @@ class MainMenuScreen : Screen
                 audio2.PlayWAV(0, 1, 0);
                 
                 chosenOption--;
-                imgChoseOption.MoveTo(470, (short)(imgChoseOption.Y - 50));
+                imgChoseOption.MoveTo((short)(470 + len), 
+                    (short)(imgChoseOption.Y - 50));
                 InitText();
                 Draw();
 
@@ -151,7 +169,8 @@ class MainMenuScreen : Screen
                 audio2.PlayWAV(0, 1, 0);
                 
                 chosenOption++;
-                imgChoseOption.MoveTo(470, (short)(imgChoseOption.Y + 50));
+                imgChoseOption.MoveTo((short)(470 + len), 
+                    (short)(imgChoseOption.Y + 50));
                 InitText();
                 Draw();
             }

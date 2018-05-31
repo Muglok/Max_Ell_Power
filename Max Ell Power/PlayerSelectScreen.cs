@@ -8,7 +8,6 @@ using Tao.Sdl;
 
 class PlayerSelectScreen : Screen
 {
-
     private Image backGround,downArrow;
     private int[] characterXPositions;
     private int[] characterYPositions;
@@ -17,6 +16,8 @@ class PlayerSelectScreen : Screen
     private Audio arrowSound;
     private IntPtr tittle;
     private Font font;
+    string[] text = new string[] { "Player Select Screen",
+    "Seleccion de personaje"};
 
     public PlayerSelectScreen(Hardware hardware) : base(hardware)
     {
@@ -46,7 +47,7 @@ class PlayerSelectScreen : Screen
         downArrow.Y = (short)characterYPositions[chosenPlayer];
         Sdl.SDL_Color red = new Sdl.SDL_Color(255, 128, 0);
         tittle = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
-            "Player Select Screen", red);
+            text[GameController.language-1], red);
     }
 
     public override void Show()

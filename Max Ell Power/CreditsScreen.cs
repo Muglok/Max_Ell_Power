@@ -9,16 +9,26 @@ class CreditsScreen : Screen
     Image bakcGround;
     Audio audio;
     Font font;
-    string[] taks = new string[] { "Development boss", "Team leader",
+    string[] tasks;
+    string[] agreements;
+    string[] tasksIn = new string[] { "Development boss", "Team leader",
     "Programmers", "Analyst", "Beta Tester", "New technologies investigator",
         "Head of Systems", "Distributor"};
+    string[] tasksEs = new string[] { "Jefe De Desarroyo", "Lider De Equipo",
+    "Programadores", "Analista", "Beta Tester", "Investigador De Nuevas Tecnologias",
+        "Jefe De Systemas", "Distribuidor"};
     string[] names = new string[] { "Marcos Cervantes Matamoros", "Cervantes Marcos",
     "MCM", "Cervantes Marcos", "Muglok - Deisuke", "Marcos Cervantes Matamoros",
         "Marcos Cervantes Matamoros", "Marcos CM"};
-    string[] agreements = new string[] {"Special thanks to all teachers that have" +
+    string[] agreementsIn = new string[] {"Special thanks to all teachers that have" +
         " made possible the creation of ",
         "this game and creators of all free sprites, fonts and sounds to libre use.",
         "Without all of you this game cannot would have been possible." };
+    string[] agreementsEs = new string[] {"Un agradecimiento especial a todos los " +
+        "prefesores que han hecho posible la creacion",
+        "  de este juego y a los creadores de los sprites, fuentes y sonidos gratuitos" +
+        " de libre uso.",
+        "Sin todos ustedes, este juego no podría haber sido posible." };
     IntPtr[] taksPtr = new IntPtr[9];
     IntPtr[] namesPtr = new IntPtr[9];
     IntPtr[] agreementsPtr = new IntPtr[3];
@@ -38,14 +48,26 @@ class CreditsScreen : Screen
 
     public void InitText()
     {
+        switch (GameController.language)
+        {
+            case 1:
+                tasks = tasksIn;
+                agreements = agreementsIn;break;
+            case 2:
+                tasks = tasksEs;
+                agreements = agreementsEs;break;
+            default:
+                tasks = tasksIn; break;
+        }
+
         font = new Font("fonts/Nashville.ttf", 33);
         Sdl.SDL_Color gray = new Sdl.SDL_Color(125, 125, 125);
         Sdl.SDL_Color blue = new Sdl.SDL_Color(66, 125, 255);
 
-        for (int i = 0; i < taks.Length; i++)
+        for (int i = 0; i < tasks.Length; i++)
         {
             taksPtr[i] = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
-            taks[i], gray);
+            tasks[i], gray);
 
             namesPtr[i] = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
             names[i], gray);
@@ -59,7 +81,7 @@ class CreditsScreen : Screen
                 agreements[i], blue);
         }
 
-        for (int i = 0; i < taks.Length; i++)
+        for (int i = 0; i < tasks.Length; i++)
         {
             if (taksPtr[i] == IntPtr.Zero || namesPtr[i] == IntPtr.Zero)
                 Environment.Exit(5);
@@ -78,7 +100,7 @@ class CreditsScreen : Screen
         for (short i = 0; i < taksPtr.Length - 1; i++)
         {
             hardware.WriteText(taksPtr[i],
-                (short)((GameController.SCREEN_WIDTH / 2) - (taks[i].Length * 13) - 100)
+                (short)((GameController.SCREEN_WIDTH / 2) - (tasks[i].Length * 13) - 100)
                 , (short)(75 + i * 50));
 
             hardware.WriteText(namesPtr[i],

@@ -8,13 +8,21 @@ class HelpScreen : Screen
     Audio audio;
     Font font;
     bool spacePressed;
-    string[] texts = new string[] {"Use arrows to move in the menus and move the character"
-    ,"Space or 'A' button to acept and jump in the game", "Escape key or 'B' button to exit"};
+    string[] texts;
+    string[] textsIn = new string[] {"Use arrows to move in the menus and move the " 
+        + "character"
+    ,"Space or 'A' button to acept and jump in the game", "Escape key or 'B' "
+        + "button to exit"};
+    string[] textsEs = new string[] {"Usa las flechas para moverte por los menus " +
+        "y mover al personaje"
+    ,"Usa el Espacio o el boton A para aceptar o saltar",
+        "Tecla Escape o boton B para salir"};
+    short num = GameController.language;
     IntPtr[] textsPtr = new IntPtr[3];
 
     public HelpScreen(Hardware hardware) : base(hardware)
     {
-        font = new Font("fonts/Nashville.ttf", 37);
+        font = new Font("fonts/Nashville.ttf", 33);
         bakcGround = new Image("imgs/Help.png", 1200, 720);
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Wistful-for-piano.mid");
@@ -24,6 +32,16 @@ class HelpScreen : Screen
 
     public void InitText()
     {
+        switch (num)
+        {
+            case 1:
+                texts = textsIn; break;
+            case 2:
+                texts = textsEs;break;
+            default:
+                texts = textsIn;
+                break;
+        }
         Sdl.SDL_Color black = new Sdl.SDL_Color(255, 255, 0);
 
         for (int i = 0; i < textsPtr.Length; i++)
@@ -44,9 +62,9 @@ class HelpScreen : Screen
     {
         hardware.DrawImage(bakcGround);
 
-        hardware.WriteText(textsPtr[0], 335, 125);
-        hardware.WriteText(textsPtr[1], 435, 375);
-        hardware.WriteText(textsPtr[2], 500, 585);
+        hardware.WriteText(textsPtr[0], 320, 125);
+        hardware.WriteText(textsPtr[1], 415, 375);
+        hardware.WriteText(textsPtr[2], 485, 585);
 
         hardware.UpdateScreen();
     }

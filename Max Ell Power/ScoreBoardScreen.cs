@@ -11,7 +11,12 @@ class ScoreBoardScreen : Screen
     Font font;
     bool spacePressed;
     List<Scores> scoreList;
-
+    string[,] text = new string[2, 3]
+    {
+        {"Player number ","  Score: ","  Jumps: " },
+        {"Numero de jugador ","  Puntuacion: ","  Saltos: " }
+    };
+    int ind = GameController.language - 1;
     IntPtr[] scorePtr;
 
     public ScoreBoardScreen(Hardware hardware) : base(hardware)
@@ -37,8 +42,8 @@ class ScoreBoardScreen : Screen
 
         for (int i = 0; i < scorePtr.Length; i++)
         {
-            line = "Player number " + Convert.ToInt32(scoreList[i].num) + "  Score: " +
-                Convert.ToInt32(scoreList[i].score) + "  Jumps: " +
+            line = text[ind,0] + Convert.ToInt32(scoreList[i].num) + text[ind, 1] +
+                Convert.ToInt32(scoreList[i].score) + text[ind, 2] +
                 Convert.ToInt32(scoreList[i].jumps);
             scorePtr[i] = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
             line, red);

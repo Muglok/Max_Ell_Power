@@ -6,6 +6,7 @@ class GameController
     public const short SCREEN_WIDTH = 1200;
     public const short SCREEN_HEIGHT = 720;
     public static short lastGame = 0;
+    public static short language = 1;
 
     public void Start()
     {
@@ -23,6 +24,7 @@ class GameController
         
         HordeModeScreen hordeMode;
 
+        intro.Show();
         do
         {
             mainMenu.Show();
