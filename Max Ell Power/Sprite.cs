@@ -26,6 +26,12 @@ class Sprite
                  this.Y + this.SPRITE_HEIGHT> sp.Y && Y<sp.Y + sp.ImageHeight);
     }
 
+    public bool CollidesWithImageShoot(Image sp)
+    {
+        return (this.SpriteImage.X + this.SPRITE_WIDTH > sp.X && this.SpriteImage.X < sp.X + sp.ImageWidth &&
+                this.SpriteImage.Y + this.SPRITE_HEIGHT > sp.Y && this.SpriteImage.Y < sp.Y + sp.ImageHeight);
+    }
+
     public bool IsOver(Image img)
     {
         return (this.CollidesWith(img, (short)(this.SPRITE_WIDTH - this.SPRITE_BASE), 
@@ -37,5 +43,26 @@ class Sprite
     {
         return (X + w1 >= img.X && X <= img.X + w2 &&
                     Y + h1 >= img.Y && Y <= img.Y + h2);
+    }
+
+    public bool CollidesWith(Sprite sp)
+    {
+        return (this.X + this.SPRITE_WIDTH > sp.X && X < sp.X + sp.SPRITE_WIDTH &&
+                 this.Y + this.SPRITE_HEIGHT > sp.Y && Y < sp.Y + sp.SPRITE_HEIGHT);
+    }
+
+    public bool CollidesWith(List<Wall> sprites)
+    {
+        foreach (Sprite sp in sprites)
+            if (this.CollidesWith(sp))
+                return true;
+        return false;
+    }
+    public bool CollidesWith(List<Platform> sprites)
+    {
+        foreach (Sprite sp in sprites)
+            if (this.CollidesWith(sp))
+                return true;
+        return false;
     }
 }

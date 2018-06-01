@@ -58,5 +58,10 @@ class AerialEnemy : Enemy
 
         UpdateSpriteCoordinates();
     }
+
+    public AerialEnemy(short x, short y) : this()
+    {
+        this.MoveTo(x, y);
+    }
 }
 

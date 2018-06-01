@@ -42,7 +42,7 @@ class IntroScreen : Screen
     {
         next = false;
         Draw();
-        Thread.Sleep(300);
+        //Thread.Sleep(300);
         audio.PlayMusic(0, -1);
 
         do

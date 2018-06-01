@@ -59,5 +59,10 @@ class LandEnemy : Enemy
 
         UpdateSpriteCoordinates();
     }
+
+    public LandEnemy(short x, short y) : this()
+    {
+        this.MoveTo(x, y);
+    }
 }
 

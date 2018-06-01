@@ -17,7 +17,7 @@ class HelpScreen : Screen
         "y mover al personaje"
     ,"Usa el Espacio o el boton A para aceptar o saltar",
         "Tecla Escape o boton B para salir"};
-    short num = GameController.language;
+    short num;
     IntPtr[] textsPtr = new IntPtr[3];
 
     public HelpScreen(Hardware hardware) : base(hardware)
@@ -27,7 +27,6 @@ class HelpScreen : Screen
         audio = new Audio(44100, 2, 4096);
         audio.AddMusic("sound/Wistful-for-piano.mid");
         bakcGround.MoveTo(0, 0);
-        InitText();
     }
 
     public void InitText()
@@ -60,6 +59,7 @@ class HelpScreen : Screen
 
     public void Draw()
     {
+        InitText();
         hardware.DrawImage(bakcGround);
 
         hardware.WriteText(textsPtr[0], 320, 125);
@@ -71,13 +71,12 @@ class HelpScreen : Screen
 
     public override void Show()
     {
+        num = GameController.language;
         audio.PlayMusic(0, -1);
         spacePressed = false;
-        
+        Draw();
         do
         {
-            Draw();
-
             int keyPressed = hardware.KeyPressed();
 
             /*Two conditions to equalize the joystick movement with the 

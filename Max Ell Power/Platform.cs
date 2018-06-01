@@ -12,7 +12,7 @@ class Platform : StaticSprite
         {
             SPRITE_WIDTH = 150;
             SPRITE_HEIGHT = 103;
-            floorMargin = 0;
+            floorMargin = -20;
             SpriteImage = new Image("imgs/platform1.png", SPRITE_WIDTH,
                 SPRITE_HEIGHT);
         }
@@ -30,6 +30,6 @@ class Platform : StaticSprite
     public Platform(int n, short x, short y) : this(n)
     {
         this.SpriteImage.X = x;
-        this.SpriteImage.Y = (short)(y - 720 - this.floorMargin);
+        this.SpriteImage.Y = (short)(y - this.floorMargin);
     }
 }

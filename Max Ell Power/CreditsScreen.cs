@@ -43,7 +43,6 @@ class CreditsScreen : Screen
 
         bakcGround.MoveTo(0, 0);
 
-        InitText();
     }
 
     public void InitText()
@@ -96,6 +95,7 @@ class CreditsScreen : Screen
 
     public void Draw()
     {
+        InitText();
         hardware.DrawImage(bakcGround);
         for (short i = 0; i < taksPtr.Length - 1; i++)
         {
@@ -120,10 +120,10 @@ class CreditsScreen : Screen
         audio.PlayMusic(0, -1);
         bakcGround.MoveTo(0, 0);
         spacePressed = false;
+        Draw();
 
         do
         {
-            Draw();
 
             int keyPressed = hardware.KeyPressed();
 

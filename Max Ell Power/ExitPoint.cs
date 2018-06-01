@@ -4,6 +4,10 @@
 */
 class ExitPoint : StaticSprite
 {
-    //TO DO
+        public ExitPoint(short x, short y)
+        {
+            X = x;
+            Y = y;
+        }
 }
 

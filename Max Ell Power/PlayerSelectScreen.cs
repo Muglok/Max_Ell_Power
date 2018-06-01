@@ -45,13 +45,19 @@ class PlayerSelectScreen : Screen
             (@"imgs\Arrow2MiniDown.png", 57, 48);
         downArrow.X = (short)characterXPositions[chosenPlayer];
         downArrow.Y = (short)characterYPositions[chosenPlayer];
+        
+    }
+
+    public void InitText()
+    {
         Sdl.SDL_Color red = new Sdl.SDL_Color(255, 128, 0);
         tittle = SdlTtf.TTF_RenderText_Solid(font.GetFontType(),
-            text[GameController.language-1], red);
+            text[GameController.language - 1], red);
     }
 
     public override void Show()
     {
+        InitText();
         backgroundMusic.PlayMusic(0, -1);
         int keyPressed;
         hardware.ClearScreen();

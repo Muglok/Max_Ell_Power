@@ -12,19 +12,17 @@ class GameController
     {
         //TO DO
         Hardware hardware = new Hardware(SCREEN_WIDTH, SCREEN_HEIGHT, 24, false);
-
-        GameScreen game = new GameScreen(hardware);
         IntroScreen intro = new IntroScreen(hardware);
+        GameScreen game = new GameScreen(hardware);
         CreditsScreen credits = new CreditsScreen(hardware);
         PlayerSelectScreen playerSelect = new PlayerSelectScreen(hardware);
         ScoreBoardScreen scoreBoard;
         MainMenuScreen mainMenu = new MainMenuScreen(hardware);
         HelpScreen helpScreen = new HelpScreen(hardware);
         OptionsScreen optionsScreen = new OptionsScreen(hardware);
-        
-        HordeModeScreen hordeMode;
-
         intro.Show();
+
+        HordeModeScreen hordeMode;
         do
         {
             mainMenu.Show();

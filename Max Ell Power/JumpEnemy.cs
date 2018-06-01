@@ -58,5 +58,9 @@ class JumpEnemy : Enemy
 
         UpdateSpriteCoordinates();
     }
+    public JumpEnemy(short x, short y) : this()
+    {
+        this.MoveTo(x, y);
+    }
 }
 

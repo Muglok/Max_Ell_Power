@@ -11,6 +11,7 @@ abstract class MainCharacter : MovableSprite
 
     public MainCharacter()
     {
+        Lives = 5;
         Points = 0;
         Weapons = new List<Weapon>();
     }
@@ -19,10 +20,15 @@ abstract class MainCharacter : MovableSprite
 
     public void AddWeapon(Weapon w)
     {
-        w.X = this.X;
-        w.Y = this.Y;
         w.CurrentDirection = this.CurrentDirection;
-        w.UpdateSpriteCoordinates();
+        if(w.CurrentDirection == MovableSprite.SpriteDirections.LEFT)
+            w.SpriteImage.X = (short)(this.X - 30);
+        else if(w.CurrentDirection == MovableSprite.SpriteDirections.RIGHT)
+            w.SpriteImage.X = (short)(this.X + 150);
+
+        w.SpriteImage.Y = (short)(this.Y + this.SPRITE_HEIGHT/2);
+        
+        //w.UpdateSpriteCoordinates();
         Weapons.Add(w);
     }
     public void RemoveWeapon(int index)

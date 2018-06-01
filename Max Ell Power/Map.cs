@@ -8,7 +8,7 @@ class Map
 {
     public List<Wall> Walls { get; }
     public List<Platform> Platforms { get; }
-    public List<Enemy> Enemies { get; }
+    public List<Enemy> Enemy { get; }
     public List<EnemiesGenerator> Generators { get; }
     public List<DangerousFloor> DangerousFloors { get; }
     public List<Treasure> Treasures { get; }
@@ -16,7 +16,7 @@ class Map
     public List<Ladder> Ladders { get; }
     public List<CheckPoint> CheckPoints { get; }
     public StartPoint Start { get; set; }
-    public StartPoint Exit { get; set; }
+    public ExitPoint Exit { get; set; }
     public Image BackGround { get; set; }
 
     public short XMeasure = 50;
@@ -31,9 +31,12 @@ class Map
         
         Walls = new List<Wall>();
         Platforms = new List<Platform>();
-        Enemies = new List<Enemy>();
-        XMap = YMap = 0;
-        BackGround = new Image("Map/fondo.png", 4800, 1440);
+        DangerousFloors = new List<DangerousFloor>();
+        Ladders = new List<Ladder>();
+        Enemy = new List<Enemy>();
+        XMap = 0;
+        YMap = 720;
+        BackGround = new Image("Map/FondoFinal.png", 4800, 1440);
 
         string[] lines = File.ReadAllLines(fileName);
         if (lines.Length > 0)
@@ -45,41 +48,98 @@ class Map
             {
                 for (int j = 0; j < lines[i].Length; j++)
                 {
-                    if (lines[i][j] == 'W')
+                    if (lines[i][j] == '5')
                     {
-                        AddWall(new Wall((short)(j * XMeasure), (short)(i * YMeasure)));
+                        AddWall(new Wall(5, (short)(j * XMeasure), (short)(i * YMeasure)));
                     }
-                    else if (lines[i][j] == 'P')
+                    else if (lines[i][j] == '4')
+                    {
+                        AddWall(new Wall(4, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '6')
+                    {
+                        AddWall(new Wall(6, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '7')
+                    {
+                        AddWall(new Wall(7, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '8')
+                    {
+                        AddWall(new Wall(8, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '9')
+                    {
+                        AddWall(new Wall(9, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '1')
+                    {
+                        AddWall(new Wall(1, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '2')
+                    {
+                        AddWall(new Wall(2, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == '3')
+                    {
+                        AddWall(new Wall(3, (short)(j * XMeasure), (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == 'p')
                     {
                         AddPlatform(new Platform(1,(short)(j * XMeasure), 
                             (short)(i * YMeasure)));
                     }
-                    else if (lines[i][j] == 'p')
+                    else if (lines[i][j] == 'P')
                     {
                         AddPlatform(new Platform(2,(short)(j * XMeasure), 
+                            (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == 'Y')
+                    {
+                        AddDangerousFloor(new DangerousFloor((short)(j * XMeasure), 
+                            (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == 'L')
+                    {
+                        AddLadder(new Ladder((short)(j * XMeasure),
+                            (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == 'A')
+                    {
+                        Enemy.Add(new AerialEnemy((short)(j * XMeasure),
+                            (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == 'J')
+                    {
+                        Enemy.Add(new JumpEnemy((short)(j * XMeasure),
+                            (short)(i * YMeasure)));
+                    }
+                    else if (lines[i][j] == 'T')
+                    {
+                        Enemy.Add(new LandEnemy((short)(j * XMeasure),
                             (short)(i * YMeasure)));
                     }
                     else if (lines[i][j] == 'X')
                     {
                         XMap = (short)(j * XMeasure);
                         YMap = (short)(i * YMeasure);
-                        AddWall(new Wall((short)(j * XMeasure), (short)(i * YMeasure)));
+                        
                     }
                     else if (lines[i][j] == 'x')
                     {
                         XMap = (short)(j * XMeasure);
                         YMap = (short)(i * YMeasure);
                     }
-                    /*else if (lines[i][j] == 'S')
+                   else if (lines[i][j] == 'S')
                     {
+                        AddWall(new Wall(8, (short)(j * XMeasure), (short)(i * YMeasure)));
                         Start = new StartPoint((short)(j * XMeasure), (short)(i * YMeasure));
-                        //                           Start.X -= XMap;
-                        //                           Start.Y -= YMap;
                     }
                     else if (lines[i][j] == 'E')
                     {
                         Exit = new ExitPoint((short)(j * XMeasure), (short)(i * YMeasure));
-                    }*/
+                    }
+                    
                 }
             }
         }
@@ -93,6 +153,16 @@ class Map
     public void AddPlatform(Platform P)
     {
         Platforms.Add(P);
+    }
+
+    public void AddDangerousFloor(DangerousFloor Y)
+    {
+        DangerousFloors.Add(Y);
+    }
+
+    public void AddLadder(Ladder L)
+    {
+        Ladders.Add(L);
     }
 
     public void CollidesCharacterWithTreasure()
@@ -114,15 +184,14 @@ class Map
         {
             j = 0;
             weaponDestroyed = false;
-            while (j < Enemies.Count && !weaponDestroyed)
+            while (j < Enemy.Count && !weaponDestroyed)
             {
-                if (mainCharacter.Weapons[i].CollidesWithImage(Enemies[j].
-                    SpriteImage))
+                if (mainCharacter.Weapons[i].CollidesWithImageShoot(Enemy[j].SpriteImage))
                 {
                     mainCharacter.RemoveWeapon(i);
-                    Enemies.RemoveAt(j);
+                    Enemy.RemoveAt(j);
                     weaponDestroyed = true;
-                    result += Enemy.DESTROY_SCORE;
+                    result += global::Enemy.DESTROY_SCORE;
                 }
                 else
                     j++;

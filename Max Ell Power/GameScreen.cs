@@ -21,9 +21,8 @@ class GameScreen : Screen
     
     Audio audio;
     MainCharacter mainCharacter;
-    Enemy enemy1, enemy2, enemy3;
-    const ushort SHOT_INTERVAL = 200;
-    const ushort DAMAGE_INTERVAL = 400;
+    const ushort SHOT_INTERVAL = 300;
+    const ushort DAMAGE_INTERVAL = 450;
     bool gameOver;
     int chosenPlayer;
     int keyPressed;
@@ -46,23 +45,23 @@ class GameScreen : Screen
             {
                 case 1:
                     mainCharacter = new Bear();
-                    mainCharacter.MoveTo(450, 
-                        (short) (floorPosition - mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(map.Start.X, 
+                        (short) ((map.Start.Y)- mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 2:
                     mainCharacter = new Frog();
-                    mainCharacter.MoveTo(450,
-                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(map.Start.X,
+                        (short)(map.Start.Y - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 3:
                     mainCharacter = new Soldier();
-                    mainCharacter.MoveTo(450,
-                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(map.Start.X,
+                        (short)(map.Start.Y - mainCharacter.SPRITE_HEIGHT));
                     break;
                 case 4:
                     mainCharacter = new SpecialAgent();
-                    mainCharacter.MoveTo(450,
-                        (short)(floorPosition - mainCharacter.SPRITE_HEIGHT));
+                    mainCharacter.MoveTo(map.Start.X,
+                        (short)(map.Start.Y - mainCharacter.SPRITE_HEIGHT));
                     break;
             }
         }
@@ -75,7 +74,6 @@ class GameScreen : Screen
         audio.AddMusic("sound/Heroic-Deeds.mid");
         map = new Map("Map/map1.txt");
         scoreList = new List<Scores>();
-        NewEnemy();
         Load();
     }
 
@@ -84,30 +82,30 @@ class GameScreen : Screen
         //TO DO
     }
 
-    public void NewEnemy()
+    public void MoveEnemy(ref DateTime timestamp)
     {
-        //TO DO
-        enemy1 = new AerialEnemy();
-        enemy1.MoveTo(600,
-                        (short)(200 - enemy1.SPRITE_HEIGHT));
-       enemy2 = new JumpEnemy();
-        enemy2.MoveTo(85,
-                        (short)(666 - enemy2.SPRITE_HEIGHT));
-        enemy3 = new LandEnemy();
-        enemy3.MoveTo(700,
-                        (short)(666 - enemy3.SPRITE_HEIGHT));
-
-        Enemies.Add(enemy1);
-        Enemies.Add(enemy2);
-        Enemies.Add(enemy3);
-    }
-
-    public void MoveEnemy()
-    {
-        foreach (Enemy Enemy in Enemies)
+        foreach (Enemy Enemy in map.Enemy)
         {
+            short oldX = Enemy.X;
+            short oldY = Enemy.Y;
             Enemy.Move(mainCharacter);
+            if (Enemy.CollidesWith(map.Walls))
+            {
+                Enemy.X = oldX;
+                Enemy.Y = oldY;
+            }
+            else if (Enemy.CollidesWithImage(mainCharacter.SpriteImage))
+            {
+                Enemy.X = oldX;
+                Enemy.Y = oldY;
+                if ((DateTime.Now - timestamp).TotalMilliseconds > DAMAGE_INTERVAL)
+                {
+                    mainCharacter.Lives -= Enemy.DAMAGE;
+                    timestamp = DateTime.Now;
+                }
+            }
         }
+        
     }
 
     public void UpdatePoints()
@@ -160,7 +158,7 @@ class GameScreen : Screen
             jumps++;
         }
 
-        if (left && mainCharacter.X > 0)
+        if (left && mainCharacter.X > 10)
         {
             mainCharacter.X -= mainCharacter.STEP_LENGHT;
             if (map.XMap > 0)
@@ -168,11 +166,21 @@ class GameScreen : Screen
         }
 
         if (right && mainCharacter.X < map.Width -
-                mainCharacter.SPRITE_WIDTH)
+                mainCharacter.SPRITE_WIDTH -10)
         {
             mainCharacter.X += mainCharacter.STEP_LENGHT;
             if (map.XMap < map.Width - GameController.SCREEN_WIDTH)
                 map.XMap += mainCharacter.STEP_LENGHT;
+        }
+
+        if (mainCharacter.Y - map.YMap < 110)
+        {
+                map.YMap -= 6;
+        }
+
+        if (mainCharacter.Y - map.YMap > 110)
+        {
+            map.YMap += 6;
         }
 
         if (map.XMap < 0)
@@ -208,80 +216,35 @@ class GameScreen : Screen
                 switch (w.CurrentDirection)
                 {
                     case MovableSprite.SpriteDirections.DOWN:
-                        w.Y += Weapon.STEP_LENGTH;
+                        w.SpriteImage.Y += Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.LEFT:
-                        w.X -= Weapon.STEP_LENGTH;
+                        w.SpriteImage.X -= Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.LEFT_DOWN:
-                        w.X -= Weapon.STEP_LENGTH;
-                        w.Y += Weapon.STEP_LENGTH;
+                        w.SpriteImage.X -= Weapon.STEP_LENGTH;
+                        w.SpriteImage.Y += Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.LEFT_UP:
-                        w.X -= Weapon.STEP_LENGTH;
-                        w.Y -= Weapon.STEP_LENGTH;
+                        w.SpriteImage.X -= Weapon.STEP_LENGTH;
+                        w.SpriteImage.Y -= Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.RIGHT:
-                        w.X += Weapon.STEP_LENGTH;
+                        w.SpriteImage.X += Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.RIGHT_DOWN:
-                        w.X += Weapon.STEP_LENGTH;
-                        w.Y += Weapon.STEP_LENGTH;
+                        w.SpriteImage.X += Weapon.STEP_LENGTH;
+                        w.SpriteImage.Y += Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.RIGHT_UP:
-                        w.X += Weapon.STEP_LENGTH;
-                        w.Y -= Weapon.STEP_LENGTH;
+                        w.SpriteImage.X += Weapon.STEP_LENGTH;
+                        w.SpriteImage.Y -= Weapon.STEP_LENGTH;
                         break;
                     case MovableSprite.SpriteDirections.UP:
-                        w.Y -= Weapon.STEP_LENGTH;
+                        w.SpriteImage.Y -= Weapon.STEP_LENGTH;
                         break;
                 }
-            }
-    }
-
-    public void CreatePlatforms()
-    {
-        map.Platforms.Add(new Platform(1, 800, 485 + 720));
-        map.Platforms.Add(new Platform(1, 950, 400 + 720));
-        map.Platforms.Add(new Platform(1, 800, 310 + 720));
-        map.Platforms.Add(new Platform(1, 300, 200 + 720));
-
-        for (int i = 4; i < 11; i++)
-        {
-            if (i < 7)
-            {
-                map.Platforms.Add(new Platform(2));
-                map.Platforms[map.Platforms.Count - 1].SpriteImage.MoveTo((short)
-                    (250 + ((map.Platforms[map.Platforms.Count - 1].SPRITE_WIDTH
-                    - 50) * (i - 4))), 575);
-            }
-            else if (i < 10)
-            {
-                map.Platforms.Add(new Platform(2));
-                map.Platforms[map.Platforms.Count - 1].SpriteImage.MoveTo((short)
-                    (225 + ((map.Platforms[map.Platforms.Count - 1].SPRITE_WIDTH
-                    - 50) * (i - 7))), 285);
-            }
-            else
-            {
-                map.Platforms.Add(new Platform(2));
-                map.Platforms[map.Platforms.Count - 1].SpriteImage.MoveTo((short)
-                    (40 + ((map.Platforms[map.Platforms.Count - 1].SPRITE_WIDTH
-                    - 50) * (i - 10))), 125);
-            }
-        }
-    }
-
-    public void CreateWalls()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            map.Walls.Add(new Wall(60, (short)((610 + 720) + 50 * i)));
-        }
-
-        for (int i = 3; i < 6; i++)
-        {
-            map.Walls.Add(new Wall(1100, (short)((610 + 720) + 50 * i)));
+            
         }
     }
 
@@ -376,20 +339,19 @@ class GameScreen : Screen
         catch (Exception) { }
     }
 
-
     public override void Show()
     {
         short oldX, oldY, oldXMap, oldYMap;
         DateTime timeStampFromLastShot = DateTime.Now;
         DateTime timeStampFromLastScoreIncrement = DateTime.Now;
         DateTime timeStampFromLastDamage = DateTime.Now;
-        map.BackGround.MoveTo(0, -720);
+        map.BackGround.MoveTo(0, 0);
 
         audio.PlayMusic(0,-1);
         gameOver = false;
-        
+
         isFalling = false;
-        isJumping = false;
+        isJumping = true;
         verticalSpeed = 100.0f;
         horizontalSpeed = 0.0f;
         movement_increment = 1.2f + mainCharacter.STEP_LENGHT;
@@ -413,12 +375,21 @@ class GameScreen : Screen
                  hardware.DrawImageMap(wall.SpriteImage, map.XMap, map.YMap);
             foreach (Platform platform in map.Platforms)
                  hardware.DrawImageMap(platform.SpriteImage, map.XMap, map.YMap);
+            foreach (DangerousFloor spikes in map.DangerousFloors)
+                hardware.DrawImageMap(spikes.SpriteImage, map.XMap, map.YMap);
+            foreach (Ladder ladder in map.Ladders)
+                hardware.DrawImageMap(ladder.SpriteImage, map.XMap, map.YMap);
+            foreach (Enemy enemy in map.Enemy)
+            {
+                enemy.SpriteImage.MoveTo(enemy.X, enemy.Y);
+                hardware.DrawImageMap(enemy.SpriteImage, map.XMap, map.YMap);
+            }
 
             mainCharacter.SpriteImage.MoveTo(mainCharacter.X,mainCharacter.Y);
             hardware.DrawImageMap(mainCharacter.SpriteImage, map.XMap, map.YMap);
 
             foreach (Weapon w in mainCharacter.Weapons)
-                hardware.DrawImage(w.SpriteImage);
+                hardware.DrawImageMap(w.SpriteImage, map.XMap, map.YMap);
 
 
             foreach (Enemy Enemy in Enemies)
@@ -435,7 +406,8 @@ class GameScreen : Screen
             oldXMap = map.XMap;
             oldYMap = map.YMap;
             MoveCharacter();
-            if (hardware.IsKeyPressed(Hardware.KEY_C))
+            if (hardware.IsKeyPressed(Hardware.KEY_C) ||
+                Hardware.JoystickPressed(2))
             {
                 if ((DateTime.Now - timeStampFromLastShot).TotalMilliseconds 
                     > SHOT_INTERVAL)
@@ -443,23 +415,22 @@ class GameScreen : Screen
                     timeStampFromLastShot = DateTime.Now;
                     mainCharacter.AddWeapon();
                 }
+                if(mainCharacter.Weapons.Count > 7)
+                    mainCharacter.RemoveWeapon(0);
             }
 
             //TO DO
             //3.-Move_Enemies_And_Objects
-            MoveEnemy();
+            MoveEnemy(ref timeStampFromLastDamage);
             MoveWeapon();
             //TO DO
             //4-.Check_Colisions_AndUpdateGameState
             isFalling = !isJumping;
-
-            if (mainCharacter.Y >= floorPosition -
-               mainCharacter.SPRITE_HEIGHT)
+            map.CollideWeaponsWithWalls(mainCharacter);
+            short points = map.CollideWeaponsWithEnemies(mainCharacter);
+            if (points > 0)
             {
-                mainCharacter.MoveTo(mainCharacter.X, (short)
-                    (floorPosition - mainCharacter.SPRITE_HEIGHT));
-                isFalling = false;
-                isJumping = false;
+                mainCharacter.Points += points;
             }
 
             foreach (Platform platforms in map.Platforms)
@@ -493,12 +464,68 @@ class GameScreen : Screen
                 }
             }
 
+            foreach (DangerousFloor spikes in map.DangerousFloors)
+                if (mainCharacter.CollidesWithImage(spikes.SpriteImage))
+                {
+                    mainCharacter.Lives = 0;
+                }
+
+            foreach (Ladder ladder in map.Ladders)
+                if (mainCharacter.CollidesWithImage(ladder.SpriteImage) 
+                    && hardware.IsKeyPressed(Hardware.KEY_UP))
+                {
+                    mainCharacter.Y -= 2;
+                    isFalling = false;
+                }
+
+
             foreach (Enemy Enemy in Enemies)
-                if (Enemy.Y >= floorPosition - Enemy.SPRITE_HEIGHT)
+            {
+                oldX = Enemy.X;
+                oldY = Enemy.Y;
+                foreach (Platform platforms in map.Platforms)
+                    if (Enemy.IsOver(platforms.SpriteImage))
+                    {
+                        Enemy.MoveTo(Enemy.X, (short)
+                            (platforms.SpriteImage.Y - Enemy.SPRITE_HEIGHT));
+                        isFalling = false;
+                        isJumping = false;
+                    }
+
+                if (Enemy.Y >= floorPosition -
+               mainCharacter.SPRITE_HEIGHT)
                 {
                     Enemy.MoveTo(Enemy.X, (short)
                         (floorPosition - Enemy.SPRITE_HEIGHT));
+                    isFalling = false;
+                    isJumping = false;
                 }
+
+                foreach (Wall walls in map.Walls)
+                {
+                    if (Enemy.IsOver(walls.SpriteImage))
+                    {
+                        Enemy.MoveTo(Enemy.X, (short)
+                            (walls.SpriteImage.Y - Enemy.SPRITE_HEIGHT));
+                        
+                    }
+
+                    else if (Enemy.CollidesWithImage(walls.SpriteImage))
+                    {
+                        Enemy.X = oldX;
+                        Enemy.Y = oldY;
+                        map.XMap = oldXMap;
+                        map.YMap = oldYMap;
+                        Enemy.MoveTo(Enemy.X, Enemy.Y);
+                        
+                    }
+                }
+            }
+
+            if (mainCharacter.CollidesWith(map.Exit))
+            {
+                    gameOver = true;
+            }
 
             //5.-Puse_Game
             //TO DO
@@ -507,6 +534,8 @@ class GameScreen : Screen
             {
                 gameOver = true;
             }
+            if (mainCharacter.Lives <= 0)
+                gameOver = true;
 
         } while (!gameOver);
         audio.StopMusic();

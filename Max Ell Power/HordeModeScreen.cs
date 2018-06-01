@@ -194,13 +194,13 @@ class HordeModeScreen : Screen
     {
         for (int i = 0; i < 3; i++)
         {
-            bricks[i] = new Wall();
+            bricks[i] = new Wall(5);
             bricks[i].SpriteImage.MoveTo(60, (short)((610) - 50 * i));
         }
 
         for (int i = 3; i < bricks.Length; i++)
         {
-            bricks[i] = new Wall();
+            bricks[i] = new Wall(5);
             bricks[i].SpriteImage.MoveTo(1100, (short)((610) - 50 * (i - 3)));
         }
     }

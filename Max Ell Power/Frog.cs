@@ -3,7 +3,7 @@ class Frog : MainCharacter
 {
     public Frog() : base()
     {
-        STEP_LENGHT = 6;
+        STEP_LENGHT = 4;
         SPRITE_WIDTH = 118;
         SPRITE_HEIGHT = 69;
         SPRITE_BASE = 40;

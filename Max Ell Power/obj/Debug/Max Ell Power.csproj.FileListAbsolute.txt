@@ -374,3 +374,142 @@ C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Shoot4RightV2.
 C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\Map\map1.txt
 C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\Map\fondo.png
 C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\SubWall5.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot1LeftV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Arrow2MiniDown.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearLeft1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearLeft2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearLeft3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearLeft4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearRight1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearRight2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearRight3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearRight4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearspritesLeft.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\bearspritesRight.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\brick.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\characterLeftMini.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\characterRightMini.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\choose_player.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyLeft1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyLeft2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyLeft3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyLeft4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyRight1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyRight2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyRight3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\AerialEnemyRight4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyLeft1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyLeft2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyLeft3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyLeft4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyRight1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyRight2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyRight3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\JumpEnemyRight4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyLeft2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyLeft3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyLeft4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyRight1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyRight2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyRight3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyRight4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Enemies\LandEnemyLeft1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\fondoNegro.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Help.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Map.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Map2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\platform1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\platform2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\PlayerSelectScreenWithCharacters.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\RanitaLeft.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaLeft1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaLeft2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaLeft3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaLeft4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaRight1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\RanitaRight2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaRight3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ranitaRight4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Options.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ScoreBoard.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot1Left.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot1Right.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot2Left.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot2LeftV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot2Right.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot3Left.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot3LeftV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot3Right.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot4Left.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot4LeftV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot4Right.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot1RightV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot2RightV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot3RightV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Shoot4RightV2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\SpecialAgentLeft.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\SpecialAgentRight.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\SubWall5.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Test.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\libfreetype-6.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\libpng12-0.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\libpng12.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Map\fondo.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Map\map1.txt
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\SDL.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\SDL_image.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\SDL_mixer.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\SDL_ttf.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\adagio-for-strings.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\Apocalypse.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\fire.wav
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\Gentle-and-cute.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\Heroic-Deeds.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\MainMusic.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\myValentine.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\song_a.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\Weird-Xmas.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\sound\Wistful-for-piano.mid
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Tao.Sdl.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\zlib1.dll
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\fonts\Abberancy.ttf
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\fonts\KaushanScript-Regular.otf
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\fonts\Nashville.ttf
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\fonts\NexaRustSlab-BlackShadow01.otf
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Max Ell Power.exe.config
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Max Ell Power.exe
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Max Ell Power.pdb
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\obj\Debug\Max Ell Power.csprojResolveAssemblyReference.cache
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\obj\Debug\Max Ell Power.csproj.CoreCompileInputs.cache
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\obj\Debug\Max Ell Power.exe
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\obj\Debug\Max Ell Power.pdb
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall1.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall3.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall4.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall5.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall6.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall7.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall8.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Walls\SubWall9.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Spikes.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Map\FondoFinal.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\Spikes2.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\imgs\ladder.png
+C:\Users\carco\Desktop\Testeo2\Max_Ell_Power-master\Max Ell Power\bin\Debug\Ladder.cs
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\ladder.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Spikes.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Spikes2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall1.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall2.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall3.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall4.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall5.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall6.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall7.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall8.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\imgs\Walls\SubWall9.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\Map\FondoFinal.png
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\Ladder.cs
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\fonts\KaushanScript-Regular.otf
+C:\Users\carco\Desktop\Max Ell Power\Max Ell Power\bin\Debug\fonts\NexaRustSlab-BlackShadow01.otf

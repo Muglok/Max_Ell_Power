@@ -4,5 +4,9 @@
 */
 class StartPoint : StaticSprite
 {
-    //TO DO
+    public StartPoint(short x, short y) : base()
+    {
+        X = x; 
+        Y = y;
+    }
 }
